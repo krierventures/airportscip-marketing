@@ -89,10 +89,13 @@
     .nav-links a:hover { color: #fff; }
     .nav-right { display: flex; align-items: center; gap: 12px; }
     .nav-signin {
-      font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.6);
+      font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.75);
       text-decoration: none; transition: color .15s;
+      padding: 9px 20px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: border-color .15s, color .15s;
     }
-    .nav-signin:hover { color: #fff; }
+    .nav-signin:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
     .btn-nav {
       background: var(--blue); color: #fff;
       padding: 9px 22px; border-radius: 8px;
@@ -430,11 +433,11 @@
     <div class="nav-links">
       <a href="#features">Features</a>
       <a href="#how-it-works">How it works</a>
-      <a href="#demo">Pricing</a>
+      <a href="/pricing">Pricing</a>
     </div>
 
     <div class="nav-right">
-      <a class="nav-signin" href="https://app.airportscip.com">Sign in</a>
+      <a class="nav-signin" href="https://app.airportscip.com">Log In</a>
       <a class="btn-nav" href="#demo">Request a Demo</a>
     </div>
   </div>
