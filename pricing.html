@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pricing — AirportsCIP</title>
+  <meta name="description" content="Simple, transparent pricing for FAA grant and CIP management. Software, expert review, or full-service consulting — choose the right level for your airport." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:        #0c1f3f;
+      --navy-mid:    #15335c;
+      --navy-light:  #1e4a82;
+      --blue:        #2563eb;
+      --blue-light:  #3b82f6;
+      --blue-pale:   #eff6ff;
+      --blue-faint:  #f0f7ff;
+      --white:       #ffffff;
+      --gray-50:     #f8fafc;
+      --gray-100:    #f1f5f9;
+      --gray-200:    #e2e8f0;
+      --gray-400:    #94a3b8;
+      --gray-500:    #64748b;
+      --text:        #1e293b;
+      --text-muted:  #475569;
+      --font-serif:  'Lora', Georgia, serif;
+      --font-sans:   'Inter', system-ui, sans-serif;
+      --max-w:       1120px;
+      --r:           10px;
+      --r-lg:        16px;
+      --r-xl:        22px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); color: var(--text); background: var(--white); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+    a { color: inherit; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(12,31,63,0.97); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .nav-inner {
+      max-width: var(--max-w); margin: 0 auto; padding: 0 2rem;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo-mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .nav-logo-mark img { width: 40px; height: 40px; object-fit: contain; display: block; }
+    .nav-logo-name { font-size: 17px; font-weight: 600; color: #fff; letter-spacing: -0.02em; }
+    .nav-logo-name span { color: #93c5fd; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.65); text-decoration: none; transition: color .15s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav-signin {
+      font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.75);
+      text-decoration: none; padding: 9px 20px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.2); transition: border-color .15s, color .15s;
+    }
+    .nav-signin:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
+    .btn-nav {
+      background: var(--blue); color: #fff; padding: 9px 22px; border-radius: 8px;
+      font-size: 14px; font-weight: 600; text-decoration: none; transition: background .15s; white-space: nowrap;
+    }
+    .btn-nav:hover { background: var(--blue-light); }
+
+    /* ── HERO ── */
+    .pricing-hero {
+      background: var(--navy); padding: 80px 2rem 88px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .pricing-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(90deg, transparent, transparent 119px, rgba(255,255,255,0.018) 119px, rgba(255,255,255,0.018) 120px);
+      pointer-events: none;
+    }
+    .pricing-hero-inner { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; }
+    .section-eyebrow {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase;
+      color: #93c5fd; margin-bottom: 14px; display: block;
+    }
+    .pricing-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(36px, 5vw, 58px); font-weight: 600;
+      line-height: 1.1; letter-spacing: -0.02em; color: #fff; margin-bottom: 18px;
+    }
+    .pricing-hero h1 em { font-style: italic; color: #93c5fd; }
+    .pricing-hero-sub {
+      font-size: 18px; color: rgba(255,255,255,0.55); line-height: 1.65;
+    }
+
+    /* ── PRICING CARDS ── */
+    .pricing-section { padding: 80px 2rem 96px; background: var(--gray-50); }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: var(--max-w); margin: 0 auto;
+      align-items: start;
+    }
+    .pricing-card {
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: var(--r-xl); padding: 40px 36px;
+      position: relative;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .pricing-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(12,31,63,0.1); }
+    .pricing-card.featured {
+      border: 2px solid var(--blue);
+      padding-top: 52px;
+    }
+    .featured-badge {
+      position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
+      background: var(--blue); color: #fff;
+      font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 6px 20px; border-radius: 0 0 10px 10px;
+      white-space: nowrap;
+    }
+    .plan-name {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--blue); margin-bottom: 10px;
+    }
+    .plan-tagline {
+      font-family: var(--font-serif); font-size: 22px; font-weight: 600;
+      color: var(--navy); line-height: 1.25; margin-bottom: 24px;
+    }
+    .plan-price {
+      display: flex; align-items: baseline; gap: 4px; margin-bottom: 6px;
+    }
+    .plan-price-amount {
+      font-family: var(--font-serif); font-size: 52px; font-weight: 600;
+      color: var(--navy); line-height: 1; letter-spacing: -0.02em;
+    }
+    .plan-price-period {
+      font-size: 14px; color: var(--text-muted); font-weight: 500;
+    }
+    .plan-price-note {
+      font-size: 13px; color: var(--text-muted); margin-bottom: 32px;
+    }
+    .plan-divider {
+      height: 1px; background: var(--gray-100); margin-bottom: 28px;
+    }
+    .plan-includes-label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase;
+      color: var(--gray-400); margin-bottom: 16px;
+    }
+    .plan-features { list-style: none; margin-bottom: 36px; }
+    .plan-features li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 15px; color: var(--text-muted); line-height: 1.55;
+      padding: 7px 0; border-bottom: 1px solid var(--gray-100);
+    }
+    .plan-features li:last-child { border-bottom: none; }
+    .plan-features li .check {
+      width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .check-blue { background: var(--blue-pale); }
+    .check-blue svg { color: var(--blue); }
+    .check-green { background: #dcfce7; }
+    .check-green svg { color: #16a34a; }
+    .plan-features li strong { color: var(--text); font-weight: 500; }
+    .btn-plan {
+      display: block; width: 100%; text-align: center;
+      padding: 14px; border-radius: var(--r);
+      font-size: 15px; font-weight: 600; text-decoration: none;
+      transition: background .15s, transform .1s;
+    }
+    .btn-plan-outline {
+      border: 1.5px solid var(--blue); color: var(--blue); background: transparent;
+    }
+    .btn-plan-outline:hover { background: var(--blue-pale); }
+    .btn-plan-filled {
+      background: var(--blue); color: #fff; border: 1.5px solid var(--blue);
+    }
+    .btn-plan-filled:hover { background: var(--blue-light); transform: translateY(-1px); }
+
+    /* ── COMPARISON NOTE ── */
+    .compare-note {
+      max-width: var(--max-w); margin: 40px auto 0; padding: 0 2rem;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      font-size: 14px; color: var(--text-muted); text-align: center;
+    }
+    .compare-note svg { flex-shrink: 0; color: var(--gray-400); }
+
+    /* ── WHAT'S INCLUDED TABLE ── */
+    .compare-section { padding: 80px 2rem 96px; background: var(--white); }
+    .compare-section h2 {
+      font-family: var(--font-serif); font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 600; letter-spacing: -0.02em; color: var(--navy);
+      margin-bottom: 48px; text-align: center;
+    }
+    .compare-section h2 em { font-style: italic; color: var(--blue); }
+    .compare-table { width: 100%; border-collapse: collapse; max-width: 900px; margin: 0 auto; }
+    .compare-table th {
+      padding: 14px 20px; font-size: 13px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.07em;
+      border-bottom: 2px solid var(--gray-200);
+    }
+    .compare-table th:first-child { text-align: left; color: var(--gray-500); }
+    .compare-table th:not(:first-child) { text-align: center; color: var(--navy); width: 130px; }
+    .compare-table th.col-featured { color: var(--blue); }
+    .compare-table td {
+      padding: 14px 20px; font-size: 14px;
+      border-bottom: 1px solid var(--gray-100);
+      vertical-align: middle;
+    }
+    .compare-table td:first-child { color: var(--text-muted); }
+    .compare-table td:not(:first-child) { text-align: center; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table .section-row td {
+      background: var(--gray-50); font-size: 11px; font-weight: 600;
+      letter-spacing: 0.07em; text-transform: uppercase; color: var(--gray-400);
+      padding: 10px 20px;
+    }
+    .tick { color: var(--blue); }
+    .tick-green { color: #16a34a; }
+    .dash { color: var(--gray-300); }
+
+    /* ── FAQ ── */
+    .faq-section { padding: 80px 2rem 96px; background: var(--gray-50); }
+    .faq-section h2 {
+      font-family: var(--font-serif); font-size: clamp(28px, 3.5vw, 42px);
+      font-weight: 600; letter-spacing: -0.02em; color: var(--navy);
+      text-align: center; margin-bottom: 56px;
+    }
+    .faq-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(440px, 1fr));
+      gap: 32px; max-width: 960px; margin: 0 auto;
+    }
+    .faq-item { padding: 28px 32px; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--r-xl); }
+    .faq-item h3 { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 10px; }
+    .faq-item p { font-size: 15px; line-height: 1.65; color: var(--text-muted); }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--navy); text-align: center;
+      padding: 100px 2rem; position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 700px; height: 350px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(37,99,235,0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-inner { position: relative; z-index: 1; max-width: 580px; margin: 0 auto; }
+    .cta-inner h2 {
+      font-family: var(--font-serif); font-size: clamp(30px, 4vw, 48px);
+      font-weight: 600; color: #fff; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 18px;
+    }
+    .cta-inner h2 em { font-style: italic; color: #93c5fd; }
+    .cta-sub { font-size: 18px; color: rgba(255,255,255,0.5); margin-bottom: 40px; line-height: 1.65; }
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--blue); color: #fff; padding: 16px 40px;
+      border-radius: 12px; font-size: 16px; font-weight: 600; text-decoration: none;
+      transition: background .15s, transform .1s;
+    }
+    .btn-cta:hover { background: var(--blue-light); transform: translateY(-2px); }
+    .cta-note { font-size: 13px; color: rgba(255,255,255,0.25); margin-top: 16px; }
+
+    /* ── FOOTER ── */
+    .footer { background: #07111f; padding: 48px 2rem; border-top: 1px solid rgba(255,255,255,0.05); }
+    .footer-inner {
+      max-width: var(--max-w); margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 24px;
+    }
+    .footer-logo { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; color: rgba(255,255,255,0.38); }
+    .footer-logo span { color: #60a5fa; }
+    .footer-links { display: flex; gap: 28px; }
+    .footer-links a { font-size: 13px; color: rgba(255,255,255,0.25); text-decoration: none; transition: color .15s; }
+    .footer-links a:hover { color: rgba(255,255,255,0.55); }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.15); }
+
+    @media (max-width: 900px) {
+      .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
+      .pricing-card.featured { padding-top: 52px; }
+      .nav-links { display: none; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .compare-table { font-size: 13px; }
+      .compare-table th, .compare-table td { padding: 12px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">
+      <div class="nav-logo-mark">
+        <img src="data:image/png;base64," alt="AirportsCIP logo" />
+      </div>
+      <span class="nav-logo-name">Airports<span>CIP</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#how-it-works">How it works</a>
+      <a href="/pricing" style="color:#fff;">Pricing</a>
+    </div>
+    <div class="nav-right">
+      <a class="nav-signin" href="https://app.airportscip.com">Log In</a>
+      <a class="btn-nav" href="#demo">Request a Demo</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="pricing-hero">
+  <div class="pricing-hero-inner">
+    <span class="section-eyebrow">Pricing</span>
+    <h1>The right level of support<br/><em>for your airport</em></h1>
+    <p class="pricing-hero-sub">
+      Start with the software. Add expert review. Or let us handle the grants entirely.
+      Every plan includes unlimited staff access and full CIP management.
+    </p>
+  </div>
+</section>
+
+<!-- PRICING CARDS -->
+<section class="pricing-section">
+  <div class="pricing-grid">
+
+    <!-- BASIC -->
+    <div class="pricing-card">
+      <div class="plan-name">Basic</div>
+      <div class="plan-tagline">Powerful software,<br/>your team in control</div>
+      <div class="plan-price">
+        <span class="plan-price-amount">$20K</span>
+        <span class="plan-price-period">/ year</span>
+      </div>
+      <div class="plan-price-note">Billed annually &mdash; unlimited staff seats included</div>
+      <div class="plan-divider"></div>
+      <div class="plan-includes-label">What's included</div>
+      <ul class="plan-features">
+        <li>
+          <span class="check check-blue"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Full CIP and grant management platform</span>
+        </li>
+        <li>
+          <span class="check check-blue"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><strong>Unlimited staff access</strong> — no per-seat fees</span>
+        </li>
+        <li>
+          <span class="check check-blue"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>NPR auto-calculation per FAA Order 5090.5</span>
+        </li>
+        <li>
+          <span class="check check-blue"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Auto-generated SF-424, FAA 5100-100, SF-270</span>
+        </li>
+        <li>
+          <span class="check check-blue"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>All 256 FAA work codes integrated</span>
+        </li>
+        <li>
+          <span class="check check-blue"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Document management and team collaboration</span>
+        </li>
+        <li>
+          <span class="check check-blue"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Email support</span>
+        </li>
+      </ul>
+      <a class="btn-plan btn-plan-outline" href="#demo">Get Started</a>
+    </div>
+
+    <!-- ADVANCED (FEATURED) -->
+    <div class="pricing-card featured">
+      <div class="featured-badge">Most Popular</div>
+      <div class="plan-name">Advanced</div>
+      <div class="plan-tagline">Software plus expert eyes<br/>on every application</div>
+      <div class="plan-price">
+        <span class="plan-price-amount">$40K</span>
+        <span class="plan-price-period">/ year</span>
+      </div>
+      <div class="plan-price-note">Billed annually &mdash; unlimited staff seats included</div>
+      <div class="plan-divider"></div>
+      <div class="plan-includes-label">Everything in Basic, plus</div>
+      <ul class="plan-features">
+        <li>
+          <span class="check check-green"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><strong>Expert review of all grant applications</strong> before submission</span>
+        </li>
+        <li>
+          <span class="check check-green"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Basic consulting services — guidance on grant strategy and CIP planning</span>
+        </li>
+        <li>
+          <span class="check check-green"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Priority support with dedicated response SLA</span>
+        </li>
+        <li>
+          <span class="check check-green"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Annual CIP review session with our team</span>
+        </li>
+      </ul>
+      <a class="btn-plan btn-plan-filled" href="#demo">Get Started</a>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="pricing-card">
+      <div class="plan-name">Premium</div>
+      <div class="plan-tagline">Full-service — we handle<br/>the grants for you</div>
+      <div class="plan-price">
+        <span class="plan-price-amount">$60K</span>
+        <span class="plan-price-period">/ year</span>
+      </div>
+      <div class="plan-price-note">Billed annually &mdash; unlimited staff seats included</div>
+      <div class="plan-divider"></div>
+      <div class="plan-includes-label">Everything in Advanced, plus</div>
+      <ul class="plan-features">
+        <li>
+          <span class="check check-green"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><strong>We prepare and submit grant applications</strong> on your behalf</span>
+        </li>
+        <li>
+          <span class="check check-green"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Full-suite consulting — CIP strategy, project scoping, and FAA coordination</span>
+        </li>
+        <li>
+          <span class="check check-green"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Drawdown and closeout management handled by our team</span>
+        </li>
+        <li>
+          <span class="check check-green"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Dedicated account manager and direct phone access</span>
+        </li>
+      </ul>
+      <a class="btn-plan btn-plan-outline" href="#demo">Get Started</a>
+    </div>
+
+  </div>
+
+  <div class="compare-note">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M8 7v4M8 5.5v.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+    All plans are billed annually. Multi-year commitments available. Contact us for custom enterprise pricing.
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="compare-section">
+  <div class="container">
+    <h2>Compare plans <em>side by side</em></h2>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Basic</th>
+          <th class="col-featured">Advanced</th>
+          <th>Premium</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="section-row"><td colspan="4">Platform</td></tr>
+        <tr>
+          <td>CIP &amp; grant management software</td>
+          <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <td>Unlimited staff seats</td>
+          <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <td>Auto-generated FAA forms</td>
+          <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <td>NPR auto-calculation</td>
+          <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr class="section-row"><td colspan="4">Consulting &amp; Expert Services</td></tr>
+        <tr>
+          <td>Expert review of grant applications</td>
+          <td class="dash"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8H12" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round"/></svg></td>
+          <td class="tick-green"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td class="tick-green"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <td>Basic consulting &amp; grant strategy</td>
+          <td class="dash"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8H12" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round"/></svg></td>
+          <td class="tick-green"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td class="tick-green"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <td>Full grant application preparation &amp; submission</td>
+          <td class="dash"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8H12" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round"/></svg></td>
+          <td class="dash"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8H12" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round"/></svg></td>
+          <td class="tick-green"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <td>Full-suite CIP &amp; FAA consulting</td>
+          <td class="dash"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8H12" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round"/></svg></td>
+          <td class="dash"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8H12" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round"/></svg></td>
+          <td class="tick-green"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <td>Drawdown &amp; closeout management</td>
+          <td class="dash"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8H12" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round"/></svg></td>
+          <td class="dash"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8H12" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round"/></svg></td>
+          <td class="tick-green"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr class="section-row"><td colspan="4">Support</td></tr>
+        <tr>
+          <td>Email support</td>
+          <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <td>Priority support &amp; dedicated SLA</td>
+          <td class="dash"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8H12" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round"/></svg></td>
+          <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <td>Dedicated account manager</td>
+          <td class="dash"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8H12" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round"/></svg></td>
+          <td class="dash"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8H12" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round"/></svg></td>
+          <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <h2>Common questions</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <h3>How many staff members can use the platform?</h3>
+        <p>Every plan includes unlimited staff seats. Your entire team — grant managers, planners, finance staff, consultants — can all access the platform at no additional cost.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What does "expert review" mean in the Advanced plan?</h3>
+        <p>Before you submit any grant application, our team reviews it for accuracy, completeness, and FAA compliance. We flag any issues and provide feedback so you submit with confidence.</p>
+      </div>
+      <div class="faq-item">
+        <h3>What's included in Premium consulting?</h3>
+        <p>We handle the entire grant process on your behalf — preparing applications, coordinating with FAA, managing drawdowns, and closing out grants. Your team stays informed through the platform while we do the work.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Can we upgrade plans mid-year?</h3>
+        <p>Yes. You can upgrade from Basic to Advanced or Premium at any time and we'll pro-rate the difference. Consulting services begin as soon as your upgrade is confirmed.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Is there a setup fee?</h3>
+        <p>No setup fees. We'll schedule an onboarding call to get your airport, projects, and existing grants loaded into the system — that's included in every plan.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Do you offer multi-year pricing?</h3>
+        <p>Yes — multi-year commitments are available at a discounted rate. Contact us to discuss options that work for your airport's budget cycle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="demo">
+  <div class="cta-inner">
+    <span class="section-eyebrow">Not sure which plan is right for you?</span>
+    <h2>Let's figure it out<br/><em>together</em></h2>
+    <p class="cta-sub">
+      Tell us about your airport's grant workload and we'll recommend the right fit.
+      No commitment, no pressure.
+    </p>
+    <a class="btn-cta" href="mailto:demo@airportscip.com?subject=Pricing%20Question%20%E2%80%94%20AirportsCIP">
+      Talk to Us
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M4 9H14M14 9L10 5M14 9L10 13" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+    <p class="cta-note">Typically a 30-minute call. No commitment required.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">
+      <img src="data:image/png;base64," alt="" style="width:28px;height:28px;object-fit:contain;opacity:0.5;" />
+      <span>Airports<span>CIP</span></span>
+    </div>
+    <div class="footer-links">
+      <a href="/privacy">Privacy Policy</a>
+      <a href="/terms">Terms of Service</a>
+      <a href="mailto:hello@airportscip.com">Contact</a>
+    </div>
+    <div class="footer-copy">&copy; 2025 AirportsCIP. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
