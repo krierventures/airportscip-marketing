@@ -9,8 +9,9 @@
     '<style>' +
     '.site-footer{background:#07111f;padding:48px 2rem;border-top:1px solid rgba(255,255,255,0.05);}' +
     '.site-footer .sf-inner{max-width:1120px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}' +
-    '.site-footer .sf-logo{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:600;color:rgba(255,255,255,0.38);}' +
+    '.site-footer .sf-logo{display:flex;align-items:flex-end;gap:8px;font-family:var(--font-serif,Georgia,serif);font-size:18px;font-weight:600;color:rgba(255,255,255,0.38);line-height:1;}' +
     '.site-footer .sf-logo img{width:28px;height:28px;object-fit:contain;opacity:0.5;}' +
+    '.site-footer .sf-name{padding-bottom:2px;}' +
     '.site-footer .sf-name span{color:#60a5fa;}' +
     '.site-footer .sf-links{display:flex;gap:28px;}' +
     '.site-footer .sf-links a{font-size:13px;color:rgba(255,255,255,0.25);text-decoration:none;transition:color .15s;}' +

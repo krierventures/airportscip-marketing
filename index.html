@@ -67,7 +67,7 @@
       height: 64px; display: flex; align-items: center; justify-content: space-between;
     }
     .nav-logo {
-      display: flex; align-items: center; gap: 10px; text-decoration: none;
+      display: flex; align-items: flex-end; gap: 10px; text-decoration: none;
     }
     .nav-logo-mark {
       width: 40px; height: 40px;
@@ -76,7 +76,8 @@
     }
     .nav-logo-mark img { width: 40px; height: 40px; object-fit: contain; display: block; }
     .nav-logo-name {
-      font-size: 17px; font-weight: 600; color: #fff; letter-spacing: -0.02em;
+      font-family: var(--font-serif); font-size: 22px; font-weight: 600;
+      color: #fff; letter-spacing: 0.01em; line-height: 1; padding-bottom: 3px;
     }
     .nav-logo-name span { color: #93c5fd; }
     .nav-links {
@@ -441,6 +442,11 @@
     @media (max-width: 480px) {
       .hero-proof { gap: 12px; }
       .proof-sep { display: none; }
+    }
+    @media (max-width: 560px) {
+      .nav-inner { padding: 0 1rem; }
+      .nav-logo-mark, .nav-logo-mark img { width: 32px; height: 32px; }
+      .nav-logo-name { font-size: 18px; padding-bottom: 2px; }
     }
   </style>
 </head>

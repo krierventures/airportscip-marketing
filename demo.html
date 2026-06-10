@@ -46,10 +46,10 @@
       max-width: var(--max-w); margin: 0 auto; padding: 0 2rem;
       height: 64px; display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo { display: flex; align-items: flex-end; gap: 10px; text-decoration: none; }
     .nav-logo-mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .nav-logo-mark img { width: 40px; height: 40px; object-fit: contain; display: block; }
-    .nav-logo-name { font-size: 17px; font-weight: 600; color: #fff; letter-spacing: -0.02em; }
+    .nav-logo-name { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: #fff; letter-spacing: 0.01em; line-height: 1; padding-bottom: 3px; }
     .nav-logo-name span { color: #93c5fd; }
     .nav-back {
       font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.75);
@@ -58,6 +58,12 @@
       transition: border-color .15s, color .15s;
     }
     .nav-back:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
+    @media (max-width: 560px) {
+      .nav-inner { padding: 0 1rem; }
+      .nav-logo-mark, .nav-logo-mark img { width: 32px; height: 32px; }
+      .nav-logo-name { font-size: 18px; padding-bottom: 2px; }
+      .nav-back { padding: 8px 12px; white-space: nowrap; }
+    }
 
     /* HEADER */
     .demo-head {

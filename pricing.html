@@ -48,10 +48,10 @@
       max-width: var(--max-w); margin: 0 auto; padding: 0 2rem;
       height: 64px; display: flex; align-items: center; justify-content: space-between;
     }
-    .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+    .nav-logo { display: flex; align-items: flex-end; gap: 10px; text-decoration: none; }
     .nav-logo-mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .nav-logo-mark img { width: 40px; height: 40px; object-fit: contain; display: block; }
-    .nav-logo-name { font-size: 17px; font-weight: 600; color: #fff; letter-spacing: -0.02em; }
+    .nav-logo-name { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: #fff; letter-spacing: 0.01em; line-height: 1; padding-bottom: 3px; }
     .nav-logo-name span { color: #93c5fd; }
     .nav-links { display: flex; align-items: center; gap: 2rem; }
     .nav-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.65); text-decoration: none; transition: color .15s; }
@@ -286,6 +286,14 @@
       .faq-grid { grid-template-columns: 1fr; }
       .compare-table { font-size: 13px; }
       .compare-table th, .compare-table td { padding: 12px 12px; }
+    }
+    @media (max-width: 560px) {
+      .nav-inner { padding: 0 1rem; }
+      .nav-logo-mark, .nav-logo-mark img { width: 32px; height: 32px; }
+      .nav-logo-name { font-size: 18px; padding-bottom: 2px; }
+      .nav-right { gap: 8px; }
+      .nav-signin { padding: 8px 12px; white-space: nowrap; }
+      .btn-nav { padding: 8px 12px; }
     }
   </style>
 </head>
