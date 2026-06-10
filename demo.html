@@ -89,19 +89,29 @@
       box-shadow: 0 24px 60px -20px rgba(12,31,63,0.18), 0 8px 24px -12px rgba(12,31,63,0.10);
       min-height: 640px;
     }
-    #my-cal-inline { width: 100%; min-height: 640px; }
+    #my-cal-inline {
+      width: 100%; min-height: 640px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    #my-cal-inline::before {
+      content: "Loading the scheduler\2026";
+      color: var(--gray-500); font-size: 15px;
+    }
+    /* once Cal.com injects its iframe, hide the placeholder text */
+    #my-cal-inline:has(iframe)::before,
+    #my-cal-inline:has(*)::before { content: none; }
 
-    /* fallback shown if the embed script doesn't load */
+    /* helper link below the scheduler, in case the embed doesn't render */
     .cal-fallback {
-      padding: 64px 32px; text-align: center;
+      padding: 20px 32px 0; text-align: center;
+    }
+    .cal-fallback p {
+      font-size: 14px; color: var(--gray-500);
     }
     .cal-fallback a {
-      display: inline-flex; align-items: center; gap: 9px;
-      background: var(--blue); color: #fff;
-      padding: 15px 32px; border-radius: 10px; font-size: 15px; font-weight: 600;
-      text-decoration: none; transition: background .15s;
+      color: var(--blue); font-weight: 600; text-decoration: none;
     }
-    .cal-fallback a:hover { background: var(--blue-light); }
+    .cal-fallback a:hover { text-decoration: underline; }
 
     .footer {
       background: #07111f; padding: 32px 2rem; text-align: center;
@@ -128,17 +138,15 @@
 <div class="demo-head">
   <div class="demo-eyebrow">Request a Demo</div>
   <h1>See it working for<br/><em>your airport</em></h1>
-  <p>Pick a time that works for you. We'll walk through your current CIP and grant portfolio together — live. No slide deck, no sales pitch.</p>
+  <p>Pick a time that works for you. We'll walk through the software and answer any questions. No slide deck, no sales pitch.</p>
 </div>
 
 <div class="cal-wrap">
   <div class="cal-frame">
-    <div id="my-cal-inline">
-      <div class="cal-fallback">
-        <p style="margin-bottom:20px;color:var(--text-muted);">Loading the scheduler&hellip; if it doesn't appear, use the button below.</p>
-        <a href="https://cal.com/kurt.airportscip/airportscip-30-minute-demo" target="_blank" rel="noopener">Open scheduler in a new tab</a>
-      </div>
-    </div>
+    <div id="my-cal-inline"></div>
+  </div>
+  <div class="cal-fallback">
+    <p>Scheduler not loading? <a href="https://cal.com/kurt.airportscip/airportscip-30-minute-demo" target="_blank" rel="noopener">Open it in a new tab</a></p>
   </div>
 </div>
 
