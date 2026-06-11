@@ -71,7 +71,7 @@
 
     /* ── HERO ── */
     .pricing-hero {
-      background: var(--navy); padding: 80px 2rem 88px; text-align: center;
+      background: var(--navy); padding: 48px 2rem 56px; text-align: center;
       position: relative; overflow: hidden;
     }
     .pricing-hero::before {
@@ -96,7 +96,7 @@
     }
 
     /* ── PRICING CARDS ── */
-    .pricing-section { padding: 80px 2rem 96px; background: var(--gray-50); }
+    .pricing-section { padding: 48px 2rem 96px; background: var(--gray-50); }
     .pricing-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -309,6 +309,7 @@
       background: var(--blue-pale); border: 1px solid #bfdbfe; border-radius: 999px;
       font-size: 14px; color: var(--text); text-align: left;
     }
+    .finder-chip[hidden] { display: none; }
     .finder-chip strong { font-weight: 600; }
     .finder-chip-clear {
       border: 0; background: none; cursor: pointer; font: inherit; font-size: 17px;
@@ -374,7 +375,6 @@
 <!-- HERO -->
 <section class="pricing-hero">
   <div class="pricing-hero-inner">
-    <span class="section-eyebrow">Pricing</span>
     <h1>The right level of support<br/><em>for your airport</em></h1>
     <p class="pricing-hero-sub">
       Start with the software. Add expert review. Or let us handle the grants entirely.
