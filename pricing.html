@@ -279,6 +279,54 @@
     .footer-links a:hover { color: rgba(255,255,255,0.55); }
     .footer-copy { font-size: 12px; color: rgba(255,255,255,0.15); }
 
+    /* ── AIRPORT FINDER ── */
+    .pricing-finder { max-width: 640px; margin: 0 auto 56px; text-align: center; }
+    .finder-heading { font-family: var(--font-serif); font-size: 24px; font-weight: 600; margin-bottom: 16px; }
+    .finder-search { position: relative; }
+    #airport-search {
+      width: 100%; padding: 13px 18px; font: inherit; font-size: 15px;
+      border: 1.5px solid var(--gray-200); border-radius: var(--r);
+      background: var(--white); color: var(--text); outline: none; transition: border-color .15s;
+    }
+    #airport-search::placeholder { color: var(--gray-400); }
+    #airport-search:focus { border-color: var(--blue); }
+    .finder-dropdown {
+      position: absolute; top: calc(100% + 6px); left: 0; right: 0; z-index: 50;
+      background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--r);
+      box-shadow: 0 12px 32px rgba(15,23,42,.12); text-align: left;
+      max-height: 320px; overflow-y: auto;
+    }
+    .finder-option {
+      display: block; width: 100%; padding: 10px 16px; font: inherit; font-size: 14px;
+      text-align: left; background: none; border: 0; cursor: pointer; color: var(--text);
+    }
+    .finder-option:hover, .finder-option.hl { background: var(--blue-pale); }
+    .finder-option .opt-meta { color: var(--gray-500); }
+    .finder-notfound { padding: 14px 16px; font-size: 13.5px; line-height: 1.5; color: var(--text-muted); }
+    .finder-notfound a { color: var(--blue); }
+    .finder-chip {
+      display: inline-flex; align-items: center; gap: 10px; margin-top: 14px; padding: 8px 16px;
+      background: var(--blue-pale); border: 1px solid #bfdbfe; border-radius: 999px;
+      font-size: 14px; color: var(--text); text-align: left;
+    }
+    .finder-chip strong { font-weight: 600; }
+    .finder-chip-clear {
+      border: 0; background: none; cursor: pointer; font: inherit; font-size: 17px;
+      line-height: 1; color: var(--gray-500); padding: 0 2px;
+    }
+    .finder-chip-clear:hover { color: var(--text); }
+    .finder-toggle {
+      display: inline-flex; margin-top: 18px; border: 1.5px solid var(--gray-200);
+      border-radius: 999px; overflow: hidden; background: var(--white);
+    }
+    .finder-toggle button {
+      font: inherit; font-size: 13.5px; font-weight: 500; padding: 9px 18px; border: 0;
+      background: none; cursor: pointer; color: var(--text-muted); white-space: nowrap;
+      transition: background .15s, color .15s;
+    }
+    .finder-toggle button.active { background: var(--blue); color: #fff; }
+    .finder-fineprint { margin-top: 12px; font-size: 12.5px; color: var(--gray-400); }
+
     @media (max-width: 900px) {
       .pricing-grid { grid-template-columns: 1fr; max-width: 480px; }
       .pricing-card.featured { padding-top: 52px; }
@@ -288,6 +336,9 @@
       .compare-table th, .compare-table td { padding: 12px 12px; }
     }
     @media (max-width: 560px) {
+      .finder-toggle { flex-direction: column; border-radius: var(--r-lg); width: 100%; }
+      .finder-toggle button { padding: 11px 18px; }
+      .finder-toggle button + button { border-top: 1px solid var(--gray-100); }
       .nav-inner { padding: 0 1rem; }
       .nav-logo-mark, .nav-logo-mark img { width: 32px; height: 32px; }
       .nav-logo-name { font-size: 18px; padding-bottom: 2px; }
@@ -334,6 +385,24 @@
 
 <!-- PRICING CARDS -->
 <section class="pricing-section">
+
+  <!-- AIRPORT FINDER -->
+  <div class="pricing-finder">
+    <h3 class="finder-heading">Find your airport's pricing</h3>
+    <div class="finder-search">
+      <input id="airport-search" type="text" placeholder="Search by LOCID, airport name, or city&hellip;"
+             autocomplete="off" spellcheck="false" aria-label="Find your airport's pricing" />
+      <div id="finder-dropdown" class="finder-dropdown" hidden></div>
+    </div>
+    <div id="finder-chip" class="finder-chip" hidden></div>
+    <div class="finder-toggle" role="group" aria-label="Airport category">
+      <button type="button" data-bucket="ga">GA, Reliever &amp; Nonprimary</button>
+      <button type="button" data-bucket="nonhub" class="active">Nonhub &amp; Small Hub Primary</button>
+      <button type="button" data-bucket="hub">Medium &amp; Large Hub</button>
+    </div>
+    <p class="finder-fineprint">Pricing based on your airport's NPIAS role &mdash; not sure? We'll confirm on your demo call.</p>
+  </div>
+
   <div class="pricing-grid">
 
     <!-- BASIC -->
@@ -341,7 +410,7 @@
       <div class="plan-name">Basic</div>
       <div class="plan-tagline">Powerful software,<br/>your team in control</div>
       <div class="plan-price">
-        <span class="plan-price-amount">$20K</span>
+        <span class="plan-price-amount" data-price="basic">$20K</span>
         <span class="plan-price-period">/ year</span>
       </div>
       <div class="plan-price-note">Billed annually &mdash; unlimited staff seats included</div>
@@ -377,7 +446,7 @@
           <span>Email support</span>
         </li>
       </ul>
-      <a class="btn-plan btn-plan-outline" href="/demo">Get Started</a>
+      <a class="btn-plan btn-plan-outline" data-cta="basic" href="/demo">Get Started</a>
     </div>
 
     <!-- ADVANCED (FEATURED) -->
@@ -386,7 +455,7 @@
       <div class="plan-name">Advanced</div>
       <div class="plan-tagline">Software plus expert eyes<br/>on every application</div>
       <div class="plan-price">
-        <span class="plan-price-amount">$40K</span>
+        <span class="plan-price-amount" data-price="advanced">$40K</span>
         <span class="plan-price-period">/ year</span>
       </div>
       <div class="plan-price-note">Billed annually &mdash; unlimited staff seats included</div>
@@ -410,7 +479,7 @@
           <span>Annual CIP review session with our team</span>
         </li>
       </ul>
-      <a class="btn-plan btn-plan-filled" href="/demo">Get Started</a>
+      <a class="btn-plan btn-plan-filled" data-cta="advanced" href="/demo">Get Started</a>
     </div>
 
     <!-- PREMIUM -->
@@ -418,7 +487,7 @@
       <div class="plan-name">Premium</div>
       <div class="plan-tagline">Full-service — we handle<br/>the grants for you</div>
       <div class="plan-price">
-        <span class="plan-price-amount">$60K</span>
+        <span class="plan-price-amount" data-price="premium">$60K</span>
         <span class="plan-price-period">/ year</span>
       </div>
       <div class="plan-price-note">Billed annually &mdash; unlimited staff seats included</div>
@@ -442,7 +511,7 @@
           <span>Dedicated account manager and direct phone access</span>
         </li>
       </ul>
-      <a class="btn-plan btn-plan-outline" href="/demo">Get Started</a>
+      <a class="btn-plan btn-plan-outline" data-cta="premium" href="/demo">Get Started</a>
     </div>
 
   </div>
@@ -453,6 +522,9 @@
   </div>
   <div class="compare-note" style="margin-top:8px;">
     Less than the cost of a single consultant-prepared grant application.
+  </div>
+  <div class="compare-note" style="margin-top:8px;">
+    Operate multiple airports? Multi-airport system discounts available &mdash;&nbsp;<a href="/demo" style="color:var(--blue);text-decoration:underline;">let's talk</a>.
   </div>
 </section>
 
@@ -604,6 +676,160 @@
 <!-- FOOTER (shared — see footer.js) -->
 <footer id="site-footer"></footer>
 <script src="/footer.js"></script>
+
+<!-- NPIAS-BASED DYNAMIC PRICING -->
+<script>
+(function () {
+  // Single source of truth for prices — edit here only.
+  var PRICING = {
+    ga:      { label: "GA, Reliever & Nonprimary",  basic: 7500,  advanced: 15000, premium: 25000 },
+    nonhub:  { label: "Nonhub & Small Hub Primary", basic: 20000, advanced: 40000, premium: 60000 },
+    hub:     { label: "Medium & Large Hub",         custom: true }
+  };
+  var ROLE_BUCKET = {
+    "General Aviation": "ga", "Reliever": "ga", "Nonprimary Commercial Service": "ga",
+    "Nonhub Primary": "nonhub", "Small Hub": "nonhub",
+    "Medium Hub": "hub", "Large Hub": "hub"
+  };
+  var PLANS = ["basic", "advanced", "premium"];
+
+  var input    = document.getElementById("airport-search");
+  var dropdown = document.getElementById("finder-dropdown");
+  var chip     = document.getElementById("finder-chip");
+  var toggle   = Array.prototype.slice.call(document.querySelectorAll(".finder-toggle button"));
+
+  function fmtPrice(v) {
+    var k = v / 1000;
+    return "$" + (k % 1 ? k.toFixed(1) : k) + "K";
+  }
+
+  function applyBucket(bucket) {
+    var p = PRICING[bucket];
+    PLANS.forEach(function (plan) {
+      var amt = document.querySelector('[data-price="' + plan + '"]');
+      var per = amt.parentElement.querySelector(".plan-price-period");
+      var btn = document.querySelector('[data-cta="' + plan + '"]');
+      if (p.custom) {
+        amt.textContent = "Custom";
+        per.style.display = "none";
+        btn.textContent = "Talk to Us";
+      } else {
+        amt.textContent = fmtPrice(p[plan]);
+        per.style.display = "";
+        btn.textContent = "Get Started";
+      }
+    });
+    toggle.forEach(function (b) {
+      b.classList.toggle("active", b.getAttribute("data-bucket") === bucket);
+    });
+  }
+
+  // ── Manual segmented toggle (clears any selected airport) ──
+  toggle.forEach(function (b) {
+    b.addEventListener("click", function () {
+      clearChip();
+      applyBucket(b.getAttribute("data-bucket"));
+    });
+  });
+
+  // ── Airport data: lazy-loaded on first interaction with the search field ──
+  var airports = null, loadPromise = null;
+  function loadData() {
+    if (!loadPromise) {
+      loadPromise = fetch("/data/npias-airports.json")
+        .then(function (r) { return r.json(); })
+        .then(function (d) { airports = d.airports; });
+    }
+    return loadPromise;
+  }
+  input.addEventListener("focus", loadData);
+
+  function search(q) {
+    q = q.trim().toLowerCase();
+    if (q.length < 2 || !airports) return [];
+    var exact = [], starts = [], subs = [];
+    for (var i = 0; i < airports.length; i++) {
+      var a = airports[i];
+      var locid = a.locid.toLowerCase(), name = a.name.toLowerCase(), city = a.city.toLowerCase();
+      if (locid === q) exact.push(a);
+      else if (locid.indexOf(q) === 0 || name.indexOf(q) === 0 || city.indexOf(q) === 0) starts.push(a);
+      else if (locid.indexOf(q) !== -1 || name.indexOf(q) !== -1 || city.indexOf(q) !== -1) subs.push(a);
+    }
+    return exact.concat(starts, subs).slice(0, 8);
+  }
+
+  // ── Dropdown rendering + keyboard navigation ──
+  var hlIndex = -1, options = [];
+  function esc(s) {
+    return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  }
+  function renderDropdown(results, q) {
+    hlIndex = -1;
+    if (q.trim().length < 2) { hideDropdown(); return; }
+    if (!results.length) {
+      dropdown.innerHTML = '<div class="finder-notfound">We couldn\'t find that airport in the NPIAS. AirportsCIP is built for NPIAS airports eligible for federal funding &mdash; reach out at <a href="mailto:hello@airportscip.com">hello@airportscip.com</a> if you think this is an error.</div>';
+      dropdown.hidden = false;
+      options = [];
+      return;
+    }
+    dropdown.innerHTML = results.map(function (a, i) {
+      return '<button type="button" class="finder-option" data-i="' + i + '">' +
+        "<strong>" + esc(a.name) + " (" + esc(a.locid) + ")</strong>" +
+        '<span class="opt-meta"> &mdash; ' + esc(a.city) + ", " + esc(a.state) + "</span></button>";
+    }).join("");
+    dropdown.hidden = false;
+    options = Array.prototype.slice.call(dropdown.querySelectorAll(".finder-option"));
+    options.forEach(function (el, i) {
+      el.addEventListener("click", function () { select(results[i]); });
+    });
+  }
+  function hideDropdown() { dropdown.hidden = true; dropdown.innerHTML = ""; options = []; hlIndex = -1; }
+
+  var lastResults = [];
+  input.addEventListener("input", function () {
+    loadData().then(function () {
+      lastResults = search(input.value);
+      renderDropdown(lastResults, input.value);
+    });
+  });
+  input.addEventListener("keydown", function (e) {
+    if (dropdown.hidden || !options.length) return;
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      hlIndex = e.key === "ArrowDown"
+        ? (hlIndex + 1) % options.length
+        : (hlIndex - 1 + options.length) % options.length;
+      options.forEach(function (el, i) { el.classList.toggle("hl", i === hlIndex); });
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      select(lastResults[hlIndex === -1 ? 0 : hlIndex]);
+    } else if (e.key === "Escape") {
+      hideDropdown();
+    }
+  });
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".finder-search")) hideDropdown();
+  });
+
+  // ── Selection chip ──
+  function select(a) {
+    if (!a) return;
+    var bucket = ROLE_BUCKET[a.role] || "nonhub";
+    hideDropdown();
+    input.value = "";
+    chip.innerHTML = "<span><strong>" + esc(a.name) + " (" + esc(a.locid) + ")</strong> &mdash; " +
+      esc(a.role) + " &middot; " + esc(a.city) + ", " + esc(a.state) + "</span>" +
+      '<button type="button" class="finder-chip-clear" aria-label="Clear selected airport">&times;</button>';
+    chip.hidden = false;
+    chip.querySelector(".finder-chip-clear").addEventListener("click", clearChip);
+    applyBucket(bucket);
+  }
+  function clearChip() {
+    chip.hidden = true;
+    chip.innerHTML = "";
+  }
+})();
+</script>
 
 </body>
 </html>
