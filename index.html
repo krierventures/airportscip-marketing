@@ -140,11 +140,14 @@
       letter-spacing: 0.08em; text-transform: uppercase;
       margin-bottom: 32px;
     }
+    /* Ambient airport line-art behind the hero. White-on-black art + screen
+       blend drops the black so only the linework lights up over the navy. */
     .hero-alp {
-      position: absolute; top: -130px; right: -280px;
-      width: 1500px; height: 964px; /* inline svg gets no intrinsic ratio from viewBox */
-      transform: rotate(-10deg);
-      opacity: 0.05;
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 32%;
+      transform: scale(1.16);
+      opacity: 0.10; mix-blend-mode: screen;
       pointer-events: none; z-index: 0;
     }
     .eyebrow-dot {
@@ -497,27 +500,8 @@
 <!-- ── HERO ── -->
 <section class="hero" aria-label="Hero">
 
-  <!-- Ambient ALP-style linework: runway, parallel taxiway, connectors, RPZ -->
-  <svg class="hero-alp" aria-hidden="true" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g stroke="#93c5fd" stroke-width="2">
-      <!-- runway -->
-      <rect x="120" y="400" width="980" height="64"/>
-      <!-- runway centerline -->
-      <line x1="190" y1="432" x2="1030" y2="432" stroke-dasharray="42 30"/>
-      <!-- threshold markings -->
-      <path d="M138 410 V454 M150 410 V454 M162 410 V454 M174 410 V454"/>
-      <path d="M1046 410 V454 M1058 410 V454 M1070 410 V454 M1082 410 V454"/>
-      <!-- parallel taxiway -->
-      <rect x="120" y="560" width="980" height="36"/>
-      <!-- connector stubs -->
-      <rect x="252" y="464" width="40" height="96"/>
-      <rect x="532" y="464" width="40" height="96"/>
-      <rect x="812" y="464" width="40" height="96"/>
-      <rect x="1008" y="464" width="40" height="96"/>
-      <!-- runway protection zone trapezoid -->
-      <path d="M1100 400 L1348 318 M1100 464 L1348 546 M1348 318 V546"/>
-    </g>
-  </svg>
+  <!-- Ambient airport line-art (white-on-black + screen blend → linework over navy) -->
+  <img class="hero-alp" src="/hero-alp.png" alt="" aria-hidden="true" width="1800" height="900" />
 
   <div class="hero-inner">
 
