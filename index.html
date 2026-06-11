@@ -134,10 +134,18 @@
     }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(37,99,235,0.18); border: 1px solid rgba(59,130,246,0.35);
-      color: #93c5fd; border-radius: 100px;
-      padding: 6px 18px; font-size: 13px; font-weight: 500;
-      margin-bottom: 36px; letter-spacing: 0.01em;
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14);
+      color: rgba(255,255,255,0.62); border-radius: 100px;
+      padding: 7px 18px; font-size: 12px; font-weight: 500;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 32px;
+    }
+    .hero-alp {
+      position: absolute; top: -130px; right: -280px;
+      width: 1500px; height: 964px; /* inline svg gets no intrinsic ratio from viewBox */
+      transform: rotate(-10deg);
+      opacity: 0.05;
+      pointer-events: none; z-index: 0;
     }
     .eyebrow-dot {
       width: 6px; height: 6px; border-radius: 50%; background: #60a5fa; flex-shrink: 0;
@@ -179,10 +187,12 @@
 
     /* ─── APP MOCKUP STRIP ─── */
     .hero-mockup {
-      width: 100%; max-width: 920px; margin: 0 auto -1px;
-      border: 1px solid rgba(255,255,255,0.1); border-bottom: none;
+      width: 100%; max-width: 1040px; margin: 0 auto -1px;
+      border: 1px solid rgba(255,255,255,0.14); border-bottom: none;
       border-radius: 18px 18px 0 0; overflow: hidden;
       background: rgba(255,255,255,0.04);
+      max-height: clamp(240px, 36vw, 440px);
+      box-shadow: 0 -16px 70px rgba(2,8,23,0.6), 0 -2px 28px rgba(96,165,250,0.08);
     }
     .mockup-chrome {
       background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.07);
@@ -368,6 +378,12 @@
       background: var(--blue-faint);
       border-top: 1px solid #dbeafe; border-bottom: 1px solid #dbeafe;
     }
+    /* ─── FOUNDERS NOTE ─── */
+    .founders { background: var(--white); text-align: center; }
+    .founders-inner { max-width: 720px; margin: 0 auto; }
+    .founders p {
+      font-size: 17px; line-height: 1.7; color: var(--text-muted); margin-top: 4px;
+    }
     .cred-label {
       font-size: 12px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase;
       color: var(--gray-400); text-align: center; margin-bottom: 40px;
@@ -438,10 +454,12 @@
       .nav-links { display: none; }
       .nav-signin { display: none; }
       .hero-mockup { max-width: 100%; }
+      .hero-alp { display: none; }
     }
-    @media (max-width: 480px) {
-      .hero-proof { gap: 12px; }
+    @media (max-width: 640px) {
+      .hero-proof { flex-direction: column; gap: 12px; }
       .proof-sep { display: none; }
+      .hero-proof-item { max-width: 100%; text-align: left; }
     }
     @media (max-width: 560px) {
       .nav-inner { padding: 0 1rem; }
@@ -478,13 +496,38 @@
 
 <!-- ── HERO ── -->
 <section class="hero" aria-label="Hero">
+
+  <!-- Ambient ALP-style linework: runway, parallel taxiway, connectors, RPZ -->
+  <svg class="hero-alp" aria-hidden="true" viewBox="0 0 1400 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <g stroke="#93c5fd" stroke-width="2">
+      <!-- runway -->
+      <rect x="120" y="400" width="980" height="64"/>
+      <!-- runway centerline -->
+      <line x1="190" y1="432" x2="1030" y2="432" stroke-dasharray="42 30"/>
+      <!-- threshold markings -->
+      <path d="M138 410 V454 M150 410 V454 M162 410 V454 M174 410 V454"/>
+      <path d="M1046 410 V454 M1058 410 V454 M1070 410 V454 M1082 410 V454"/>
+      <!-- parallel taxiway -->
+      <rect x="120" y="560" width="980" height="36"/>
+      <!-- connector stubs -->
+      <rect x="252" y="464" width="40" height="96"/>
+      <rect x="532" y="464" width="40" height="96"/>
+      <rect x="812" y="464" width="40" height="96"/>
+      <rect x="1008" y="464" width="40" height="96"/>
+      <!-- runway protection zone trapezoid -->
+      <path d="M1100 400 L1348 318 M1100 464 L1348 546 M1348 318 V546"/>
+    </g>
+  </svg>
+
   <div class="hero-inner">
+
+    <span class="hero-eyebrow">Built by former FAA airport planners</span>
 
     <h1>Plan smarter. Fund faster.<br/><em>Close grants cleaner.</em></h1>
 
     <p class="hero-sub">
       From CIP planning to grant closeout — track every phase, generate every form,
-      and never lose a deadline again. Built by former FAA airport planners — including a decade at FAA Headquarters working on the AIP program itself.
+      and never lose a deadline again.
     </p>
 
     <div class="hero-actions">
@@ -527,7 +570,7 @@
         <span class="chrome-dot" style="background:#28c840" aria-hidden="true"></span>
         <div class="chrome-bar">app.airportscip.com / projects</div>
       </div>
-      <img class="mockup-screenshot" src="/app-projects.jpg" alt="AirportsCIP projects dashboard showing five capital improvement projects for Pine Valley Airfield with NPR scores, work codes, and funding totals" />
+      <img class="mockup-screenshot" src="/app-projects.jpg" width="1840" height="961" alt="AirportsCIP projects dashboard showing five capital improvement projects for Pine Valley Airfield with NPR scores, work codes, and funding totals" />
     </div>
     <!-- /screenshot -->
 
@@ -757,6 +800,21 @@
         <div class="cred-num">AIP + BIL</div>
         <div class="cred-desc">Entitlement, discretionary &amp; IIJA funding types</div>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOUNDERS NOTE ── -->
+<section class="founders section-sm">
+  <div class="container">
+    <div class="founders-inner">
+      <h2 class="section-heading">Built by people who've sat on <em>the FAA side of the table</em></h2>
+      <p>
+        AirportsCIP was built by former FAA airport planners who've prepared grant applications
+        and managed CIPs for airports nationwide &mdash; including a decade at FAA Headquarters
+        working on the AIP program itself. We built the tool we always wished sponsors had.
+      </p>
     </div>
   </div>
 </section>
