@@ -437,13 +437,21 @@
       <div class="plan-name">Advanced</div>
       <div class="plan-tagline">Software plus expert eyes<br/>on every application</div>
       <div class="plan-price">
-        <span class="plan-price-amount" data-price="advanced">$40K</span>
+        <span class="plan-price-amount" data-price="advanced">$50K</span>
         <span class="plan-price-period">/ year</span>
       </div>
       <div class="plan-price-note">Billed annually &mdash; unlimited staff seats included</div>
       <div class="plan-divider"></div>
       <div class="plan-includes-label">Everything in Basic, plus</div>
       <ul class="plan-features">
+        <li>
+          <span class="check check-green"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><strong>Grant Marketplace</strong> &mdash; discover and pursue new funding opportunities</span>
+        </li>
+        <li>
+          <span class="check check-green"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span><strong>Entitlement &amp; PFC tracker</strong> &mdash; balances and expirations at a glance</span>
+        </li>
         <li>
           <span class="check check-green"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M1.5 5L4 7.5L8.5 2.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
           <span><strong>Expert review of all grant applications</strong> before submission</span>
@@ -469,7 +477,7 @@
       <div class="plan-name">Premium</div>
       <div class="plan-tagline">Full-service — we handle<br/>the grants for you</div>
       <div class="plan-price">
-        <span class="plan-price-amount" data-price="premium">$60K</span>
+        <span class="plan-price-amount" data-price="premium">$80K</span>
         <span class="plan-price-period">/ year</span>
       </div>
       <div class="plan-price-note">Billed annually &mdash; unlimited staff seats included</div>
@@ -548,6 +556,18 @@
           <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
           <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
           <td class="tick"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <td>Grant Marketplace</td>
+          <td class="dash"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8H12" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round"/></svg></td>
+          <td class="tick-green"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td class="tick-green"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+        </tr>
+        <tr>
+          <td>Entitlement &amp; PFC tracker</td>
+          <td class="dash"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8H12" stroke="#cbd5e1" stroke-width="1.5" stroke-linecap="round"/></svg></td>
+          <td class="tick-green"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
+          <td class="tick-green"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9L7.5 13.5L15 5" stroke="#16a34a" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></td>
         </tr>
         <tr class="section-row"><td colspan="4">Consulting &amp; Expert Services</td></tr>
         <tr>
@@ -663,19 +683,18 @@
 <script>
 (function () {
   // Single source of truth for prices — edit here only.
+  // Categories come precomputed in the data file ("cat" 1/2/3):
+  //   1 = Unclassified, Basic & Local (nonprimary asset roles)
+  //   2 = National, Regional, Nonhub & Small Hub
+  //   3 = Medium & Large Hub (custom pricing)
   var PRICING = {
-    ga:      { label: "GA, Reliever & Nonprimary",  basic: 7500,  advanced: 15000, premium: 25000 },
-    nonhub:  { label: "Nonhub & Small Hub Primary", basic: 20000, advanced: 40000, premium: 60000 },
-    hub:     { label: "Medium & Large Hub",         custom: true }
-  };
-  var ROLE_BUCKET = {
-    "General Aviation": "ga", "Reliever": "ga", "Nonprimary Commercial Service": "ga",
-    "Nonhub Primary": "nonhub", "Small Hub": "nonhub",
-    "Medium Hub": "hub", "Large Hub": "hub"
+    cat1: { label: "Unclassified, Basic & Local",            basic: 10000, advanced: 20000, premium: 30000 },
+    cat2: { label: "National, Regional, Nonhub & Small Hub", basic: 20000, advanced: 50000, premium: 80000 },
+    cat3: { label: "Medium & Large Hub",                     custom: true }
   };
   var PLANS = ["basic", "advanced", "premium"];
 
-  var DEFAULT_BUCKET = "nonhub"; // matches the static HTML prices
+  var DEFAULT_BUCKET = "cat2"; // matches the static HTML prices
 
   var input    = document.getElementById("airport-search");
   var dropdown = document.getElementById("finder-dropdown");
@@ -708,7 +727,7 @@
   var airports = null, loadPromise = null;
   function loadData() {
     if (!loadPromise) {
-      loadPromise = fetch("/data/npias-airports.json")
+      loadPromise = fetch("/data/npias-airports.json?v=2") // bump when the data file changes
         .then(function (r) { return r.json(); })
         .then(function (d) { airports = d.airports; });
     }
@@ -786,7 +805,7 @@
   // ── Selection chip ──
   function select(a) {
     if (!a) return;
-    var bucket = ROLE_BUCKET[a.role] || "nonhub";
+    var bucket = "cat" + (a.cat || 2);
     hideDropdown();
     input.value = "";
     chip.innerHTML = "<span><strong>" + esc(a.name) + " (" + esc(a.locid) + ")</strong> &mdash; " +
