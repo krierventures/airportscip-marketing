@@ -103,7 +103,7 @@
       content: "Loading the scheduler\2026";
       color: var(--gray-500); font-size: 15px;
     }
-    /* Loading placeholder only shows for non-iframe content. */
+    /* once the scheduler injects its iframe, hide the placeholder text */
     #my-cal-inline:has(iframe)::before,
     #my-cal-inline:has(*)::before { content: none; }
 
@@ -149,10 +149,10 @@
 
 <div class="cal-wrap">
   <div class="cal-frame">
-    <div id="inline-container" style="width:100%; min-height:640px;"></div>
+    <div id="my-cal-inline"></div>
   </div>
   <div class="cal-fallback">
-    <p>Scheduler not loading? <a href="https://airportscip1.zohobookings.com/#/4944756000000038045" target="_blank" rel="noopener noreferrer">Open it in a new tab</a></p>
+    <p>Scheduler not loading? <a href="https://cal.com/hello.airportscip/airportscip-demo" target="_blank" rel="noopener noreferrer">Open it in a new tab</a></p>
   </div>
 </div>
 
@@ -160,15 +160,14 @@
 <footer id="site-footer"></footer>
 <script src="/footer.js"></script>
 
-<!-- Zoho Bookings inline embed -->
-<script src="https://bookings.nimbuspop.com/assets/embed.js"></script>
-<script>
-  window.addEventListener("load", function () {
-    Bookings.inlineEmbed({
-      url: "https://airportscip1.zohobookings.com/portal-embed#/4944756000000038045",
-      parent: "#inline-container",
-      height: "640px"
-    });
+<!-- Cal.com inline embed -->
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if (typeof namespace === "string") { cal.ns[namespace] = cal.ns[namespace] || api; p(cal.ns[namespace], ar); p(cal, ["initNamespace", namespace]); } else p(cal, ar); return; } p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", { origin: "https://app.cal.com" });
+  Cal("inline", {
+    elementOrSelector: "#my-cal-inline",
+    calLink: "hello.airportscip/airportscip-demo",
+    config: { theme: "light" }
   });
 </script>
 
