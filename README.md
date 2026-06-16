@@ -4,7 +4,7 @@ Static HTML site for **airportscip.com** (apex). Deployed on Vercel; pushing to 
 
 - `index.html` — homepage
 - `pricing.html` — pricing page with NPIAS-based dynamic pricing (see below)
-- `demo.html` — demo scheduling page (Cal.com embed)
+- `demo.html` — demo scheduling page (Zoho Bookings embed)
 - `footer.js` — shared footer injected on every page (edit the footer here, not per-page)
 
 ## NPIAS airport data (`data/npias-airports.json`)
