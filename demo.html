@@ -149,7 +149,7 @@
 
 <div class="cal-wrap">
   <div class="cal-frame">
-    <iframe id="my-cal-inline" src="https://airportscip1.zohobookings.com/#/4944756000000038045" title="Schedule your AirportsCIP demo" loading="lazy" style="border:0;"></iframe>
+    <div id="inline-container" style="width:100%; min-height:640px;"></div>
   </div>
   <div class="cal-fallback">
     <p>Scheduler not loading? <a href="https://airportscip1.zohobookings.com/#/4944756000000038045" target="_blank" rel="noopener noreferrer">Open it in a new tab</a></p>
@@ -159,6 +159,18 @@
 <!-- FOOTER (shared — see footer.js) -->
 <footer id="site-footer"></footer>
 <script src="/footer.js"></script>
+
+<!-- Zoho Bookings inline embed -->
+<script src="https://bookings.nimbuspop.com/assets/embed.js"></script>
+<script>
+  window.addEventListener("load", function () {
+    Bookings.inlineEmbed({
+      url: "https://airportscip1.zohobookings.com/portal-embed#/4944756000000038045",
+      parent: "#inline-container",
+      height: "640px"
+    });
+  });
+</script>
 
 </body>
 </html>
