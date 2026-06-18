@@ -200,6 +200,45 @@
       border-top: 1px solid rgba(255,255,255,0.05);
     }
 
+    /* ─── HERO VARIANT TOGGLE (?hero=split) ───
+       Both heroes live in the DOM. Default = centered (original). Adding
+       ?hero=split sets <html class="hero-split"> (see the head script),
+       which swaps which <section> is shown. */
+    .hero-variant-split { display: none; }
+    .hero-split .hero-variant-centered { display: none; }
+    .hero-split .hero-variant-split { display: block; }
+
+    /* ─── SPLIT HERO (text left / screenshot right) ─── */
+    .hero-split-section { padding: 88px 2rem 100px; }
+    .hero-split-inner {
+      max-width: 1280px; margin: 0 auto;
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 0.85fr 1.15fr;
+      gap: 48px; align-items: center;
+    }
+    .hero-split-text { text-align: left; }
+    .hero-split-text .hero-eyebrow { margin-bottom: 24px; }
+    .hero-split-text h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(34px, 3.4vw, 54px);
+      font-weight: 600; line-height: 1.08; letter-spacing: -0.02em;
+      color: #fff; margin-bottom: 20px;
+    }
+    .hero-split-text h1 em { font-style: italic; color: #93c5fd; }
+    .hero-split-text .hero-sub {
+      font-size: clamp(16px, 1.4vw, 19px); line-height: 1.6;
+      color: rgba(255,255,255,0.58); max-width: 470px; margin-bottom: 32px;
+    }
+    .hero-split-actions { display: flex; }
+    .hero-split-media { min-width: 0; }
+    .hero-split-mockup {
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 14px; overflow: hidden;
+      background: rgba(255,255,255,0.04);
+      box-shadow: 0 30px 80px rgba(2,8,23,0.55), 0 0 0 1px rgba(255,255,255,0.03);
+    }
+    .hero-split-mockup .mockup-screenshot { border-top: none; }
+
     /* ─── SHOWCASE SECTION (dashboard) ─── */
     .showcase { background: var(--gray-50); }
     .showcase-header {
@@ -441,6 +480,16 @@
     .footer-copy { font-size: 12px; color: rgba(255,255,255,0.15); }
 
     /* ─── RESPONSIVE ─── */
+    @media (max-width: 1000px) {
+      /* Split hero stacks: text (centered) then screenshot below.
+         Stacks early because the image-heavy column ratio crowds the text
+         on mid-width screens — better to go full-width sooner. */
+      .hero-split-inner { grid-template-columns: 1fr; gap: 40px; max-width: 640px; }
+      .hero-split-text { text-align: center; }
+      .hero-split-text .hero-sub { margin-left: auto; margin-right: auto; }
+      .hero-split-actions { justify-content: center; }
+      .hero-split-section { padding: 72px 1.5rem 64px; }
+    }
     @media (max-width: 720px) {
       .nav-links { display: none; }
       .nav-signin { display: none; }
@@ -457,6 +506,9 @@
       .nav-logo-name { font-size: 18px; padding-bottom: 2px; }
     }
   </style>
+  <!-- Hero A/B toggle: ?hero=split shows the split variant. Set before body
+       paints so there's no flash of the wrong hero. -->
+  <script>try{if(new URLSearchParams(location.search).get('hero')==='split')document.documentElement.classList.add('hero-split');}catch(e){}</script>
 </head>
 <body>
 
@@ -484,8 +536,8 @@
 </nav>
 
 
-<!-- ── HERO ── -->
-<section class="hero" aria-label="Hero">
+<!-- ── HERO VARIANT: CENTERED (original) — shown by default ── -->
+<section class="hero hero-variant-centered" aria-label="Hero">
 
 
   <div class="hero-inner">
@@ -546,6 +598,41 @@
   </div>
 </section>
 
+<!-- ── HERO VARIANT: SPLIT (text left / screenshot right) — toggle with ?hero=split ── -->
+<section class="hero hero-split-section hero-variant-split" aria-label="Hero">
+  <div class="hero-split-inner">
+
+    <div class="hero-split-text">
+      <span class="hero-eyebrow">Built by former FAA airport planners</span>
+      <h1>Plan smarter. Fund faster.<br/><em>Close grants cleaner.</em></h1>
+      <p class="hero-sub">
+        From CIP planning to grant closeout — track every phase, generate every form,
+        and never lose a deadline again.
+      </p>
+      <div class="hero-split-actions">
+        <a class="btn-primary" href="/demo">
+          Request a Demo
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-split-media">
+      <div class="hero-split-mockup">
+        <div class="mockup-chrome">
+          <span class="chrome-dot" style="background:#ff5f57" aria-hidden="true"></span>
+          <span class="chrome-dot" style="background:#febc2e" aria-hidden="true"></span>
+          <span class="chrome-dot" style="background:#28c840" aria-hidden="true"></span>
+          <div class="chrome-bar">app.airportscip.com / projects</div>
+        </div>
+        <img class="mockup-screenshot" src="/app-projects.jpg" width="1840" height="961" alt="AirportsCIP projects dashboard showing five capital improvement projects for Pine Valley Airfield with NPR scores, work codes, and funding totals" />
+      </div>
+    </div>
+
+  </div>
+</section>
 
 <!-- ── PAIN SECTION ── -->
 <section class="pain section" id="problem">
