@@ -105,6 +105,12 @@
       white-space: nowrap;
     }
     .btn-nav:hover { background: var(--blue-light); }
+    /* Mobile hamburger menu (shown ≤720px via the responsive block) */
+    .nav-burger {
+      display: none; background: none; border: 0; cursor: pointer;
+      padding: 8px; color: #fff; -webkit-tap-highlight-color: transparent;
+    }
+    .nav-mobile { display: none; }
 
     /* ─── HERO ─── */
     .hero {
@@ -492,7 +498,25 @@
     }
     @media (max-width: 720px) {
       .nav-links { display: none; }
-      .nav-signin { display: none; }
+      .nav-right { display: none; }       /* moved into the hamburger menu */
+      .nav-burger { display: inline-flex; align-items: center; justify-content: center; }
+      .nav-mobile {
+        position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; padding: 6px 1.5rem 18px;
+        background: rgba(12,31,63,0.99); backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .nav.open .nav-mobile { display: flex; }
+      .nav-mobile a {
+        font-size: 15px; font-weight: 500; color: rgba(255,255,255,0.8);
+        text-decoration: none; padding: 13px 2px;
+        border-bottom: 1px solid rgba(255,255,255,0.07);
+      }
+      .nav-mobile a:hover { color: #fff; }
+      .nav-mobile a.btn-nav {
+        margin-top: 14px; border-bottom: none; text-align: center;
+        color: #fff; padding: 13px 22px;
+      }
       .hero-mockup { max-width: 100%; }
     }
     @media (max-width: 640px) {
@@ -513,7 +537,7 @@
 <body>
 
 <!-- ── NAV ── -->
-<nav class="nav" role="navigation" aria-label="Main navigation">
+<nav class="nav" id="site-nav" role="navigation" aria-label="Main navigation">
   <div class="nav-inner">
     <a class="nav-logo" href="/">
       <div class="nav-logo-mark" aria-hidden="true">
@@ -532,6 +556,21 @@
       <a class="nav-signin" href="https://app.airportscip.com">Log In</a>
       <a class="btn-nav" href="/demo">Request a Demo</a>
     </div>
+
+    <button class="nav-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile menu (revealed by the hamburger ≤720px) -->
+  <div class="nav-mobile" id="nav-mobile">
+    <a href="#features">Features</a>
+    <a href="#how-it-works">How it works</a>
+    <a href="/pricing">Pricing</a>
+    <a href="https://app.airportscip.com">Log In</a>
+    <a class="btn-nav" href="/demo">Request a Demo</a>
   </div>
 </nav>
 
@@ -899,6 +938,22 @@
 <!-- ── FOOTER (shared — see footer.js) ── -->
 <footer id="site-footer"></footer>
 <script src="/footer.js"></script>
+
+<!-- Mobile nav toggle -->
+<script>
+(function () {
+  var nav = document.getElementById('site-nav');
+  var burger = nav && nav.querySelector('.nav-burger');
+  if (!burger) return;
+  function close() { nav.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); }
+  burger.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  // Close after picking a destination.
+  nav.querySelectorAll('.nav-mobile a').forEach(function (a) { a.addEventListener('click', close); });
+})();
+</script>
 
 </body>
 </html>
