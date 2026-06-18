@@ -131,11 +131,6 @@
               mask-image: linear-gradient(180deg, rgba(0,0,0,0.85), transparent 88%);
       pointer-events: none;
     }
-    .hero-inner {
-      max-width: var(--max-w); margin: 0 auto;
-      display: flex; flex-direction: column; align-items: center;
-      text-align: center; position: relative; z-index: 1;
-    }
     .hero-eyebrow {
       display: inline-flex; align-items: center; gap: 8px;
       background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.14);
@@ -160,10 +155,6 @@
       font-size: clamp(16px, 2.2vw, 20px); line-height: 1.65;
       color: rgba(255,255,255,0.58); max-width: 600px; margin-bottom: 48px;
     }
-    .hero-actions {
-      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
-      justify-content: center; margin-bottom: 56px;
-    }
     .btn-primary {
       display: inline-flex; align-items: center; gap: 9px;
       background: var(--blue); color: #fff;
@@ -171,26 +162,8 @@
       text-decoration: none; transition: background .15s, transform .1s;
     }
     .btn-primary:hover { background: var(--blue-light); transform: translateY(-1px); }
-    .hero-proof {
-      display: flex; align-items: center; gap: 24px; flex-wrap: wrap;
-      justify-content: center; padding-bottom: 72px;
-    }
-    .hero-proof-item {
-      display: flex; align-items: center; gap: 7px;
-      font-size: 13px; color: rgba(255,255,255,0.42);
-    }
-    .hero-proof-item svg { color: #60a5fa; flex-shrink: 0; }
-    .proof-sep { width: 1px; height: 16px; background: rgba(255,255,255,0.12); }
 
-    /* ─── APP MOCKUP STRIP ─── */
-    .hero-mockup {
-      width: 100%; max-width: 1040px; margin: 0 auto -1px;
-      border: 1px solid rgba(255,255,255,0.14); border-bottom: none;
-      border-radius: 18px 18px 0 0; overflow: hidden;
-      background: rgba(255,255,255,0.04);
-      max-height: clamp(240px, 36vw, 440px);
-      box-shadow: 0 -16px 70px rgba(2,8,23,0.6), 0 -2px 28px rgba(96,165,250,0.08);
-    }
+    /* ─── BROWSER-CHROME FRAME (shared by hero + showcase screenshots) ─── */
     .mockup-chrome {
       background: rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.07);
       padding: 12px 16px; display: flex; align-items: center; gap: 8px;
@@ -206,15 +179,7 @@
       border-top: 1px solid rgba(255,255,255,0.05);
     }
 
-    /* ─── HERO VARIANT TOGGLE (?hero=split) ───
-       Both heroes live in the DOM. Default = centered (original). Adding
-       ?hero=split sets <html class="hero-split"> (see the head script),
-       which swaps which <section> is shown. */
-    .hero-variant-split { display: none; }
-    .hero-split .hero-variant-centered { display: none; }
-    .hero-split .hero-variant-split { display: block; }
-
-    /* ─── SPLIT HERO (text left / screenshot right) ─── */
+    /* ─── HERO (text left / screenshot right) ─── */
     .hero-split-section { padding: 88px 2rem 100px; }
     .hero-split-inner {
       max-width: 1280px; margin: 0 auto;
@@ -517,12 +482,6 @@
         margin-top: 14px; border-bottom: none; text-align: center;
         color: #fff; padding: 13px 22px;
       }
-      .hero-mockup { max-width: 100%; }
-    }
-    @media (max-width: 640px) {
-      .hero-proof { flex-direction: column; gap: 12px; }
-      .proof-sep { display: none; }
-      .hero-proof-item { max-width: 100%; text-align: left; }
     }
     @media (max-width: 560px) {
       .nav-inner { padding: 0 1rem; }
@@ -530,9 +489,6 @@
       .nav-logo-name { font-size: 18px; padding-bottom: 2px; }
     }
   </style>
-  <!-- Hero A/B toggle: ?hero=split shows the split variant. Set before body
-       paints so there's no flash of the wrong hero. -->
-  <script>try{if(new URLSearchParams(location.search).get('hero')==='split')document.documentElement.classList.add('hero-split');}catch(e){}</script>
 </head>
 <body>
 
@@ -575,70 +531,8 @@
 </nav>
 
 
-<!-- ── HERO VARIANT: CENTERED (original) — shown by default ── -->
-<section class="hero hero-variant-centered" aria-label="Hero">
-
-
-  <div class="hero-inner">
-
-    <span class="hero-eyebrow">Built by former FAA airport planners</span>
-
-    <h1>Plan smarter. Fund faster.<br/><em>Close grants cleaner.</em></h1>
-
-    <p class="hero-sub">
-      From CIP planning to grant closeout — track every phase, generate every form,
-      and never lose a deadline again.
-    </p>
-
-    <div class="hero-actions">
-      <a class="btn-primary" href="/demo">
-        Request a Demo
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-    </div>
-
-    <div class="hero-proof" role="list">
-      <div class="hero-proof-item" role="listitem">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <path d="M2 7L5.5 10.5L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Understand how your project could compete using auto-calculated NPR per Order 5090.5
-      </div>
-      <div class="proof-sep" aria-hidden="true"></div>
-      <div class="hero-proof-item" role="listitem">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <path d="M2 7L5.5 10.5L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Stop re-typing the same data across SF-424s, 5100-100s, and SF-270s
-      </div>
-      <div class="proof-sep" aria-hidden="true"></div>
-      <div class="hero-proof-item" role="listitem">
-        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-          <path d="M2 7L5.5 10.5L12 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        Assign specific tasks to your team and consultants
-      </div>
-    </div>
-
-    <!-- App screenshot strip -->
-    <div class="hero-mockup">
-      <div class="mockup-chrome">
-        <span class="chrome-dot" style="background:#ff5f57" aria-hidden="true"></span>
-        <span class="chrome-dot" style="background:#febc2e" aria-hidden="true"></span>
-        <span class="chrome-dot" style="background:#28c840" aria-hidden="true"></span>
-        <div class="chrome-bar">app.airportscip.com / projects</div>
-      </div>
-      <img class="mockup-screenshot" src="/app-projects.jpg" width="1840" height="961" alt="AirportsCIP projects dashboard showing five capital improvement projects for Pine Valley Airfield with NPR scores, work codes, and funding totals" />
-    </div>
-    <!-- /screenshot -->
-
-  </div>
-</section>
-
-<!-- ── HERO VARIANT: SPLIT (text left / screenshot right) — toggle with ?hero=split ── -->
-<section class="hero hero-split-section hero-variant-split" aria-label="Hero">
+<!-- ── HERO (text left / screenshot right) ── -->
+<section class="hero hero-split-section" aria-label="Hero">
   <div class="hero-split-inner">
 
     <div class="hero-split-text">
