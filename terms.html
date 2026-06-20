@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — AirportsCIP</title>
+  <meta name="description" content="The Terms of Service governing use of the AirportsCIP platform for FAA grant and capital improvement plan management." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:        #0c1f3f;
+      --navy-mid:    #15335c;
+      --navy-light:  #1e4a82;
+      --blue:        #2563eb;
+      --blue-light:  #3b82f6;
+      --blue-pale:   #eff6ff;
+      --blue-faint:  #f0f7ff;
+      --white:       #ffffff;
+      --gray-50:     #f8fafc;
+      --gray-100:    #f1f5f9;
+      --gray-200:    #e2e8f0;
+      --gray-400:    #94a3b8;
+      --gray-500:    #64748b;
+      --text:        #1e293b;
+      --text-muted:  #475569;
+      --font-serif:  'Lora', Georgia, serif;
+      --font-sans:   'Inter', system-ui, sans-serif;
+      --max-w:       1120px;
+      --r:           10px;
+      --r-lg:        16px;
+      --r-xl:        22px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); color: var(--text); background: var(--white); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+    a { color: inherit; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(12,31,63,0.97); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .nav-inner {
+      max-width: var(--max-w); margin: 0 auto; padding: 0 2rem;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: flex-end; gap: 10px; text-decoration: none; }
+    .nav-logo-mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .nav-logo-mark img { width: 40px; height: 40px; object-fit: contain; display: block; }
+    .nav-logo-name { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: #fff; letter-spacing: 0.01em; line-height: 1; padding-bottom: 3px; }
+    .nav-logo-name span { color: #93c5fd; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.65); text-decoration: none; transition: color .15s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav-signin {
+      font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.75);
+      text-decoration: none; padding: 9px 20px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.2); transition: border-color .15s, color .15s;
+    }
+    .nav-signin:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
+    .btn-nav {
+      background: var(--blue); color: #fff; padding: 9px 22px; border-radius: 8px;
+      font-size: 14px; font-weight: 600; text-decoration: none; transition: background .15s; white-space: nowrap;
+    }
+    .btn-nav:hover { background: var(--blue-light); }
+
+    /* ── LEGAL HERO ── */
+    .legal-hero {
+      background: var(--navy); padding: 56px 2rem 48px;
+      position: relative; overflow: hidden;
+    }
+    .legal-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(90deg, transparent, transparent 119px, rgba(255,255,255,0.018) 119px, rgba(255,255,255,0.018) 120px);
+      pointer-events: none;
+    }
+    .legal-hero-inner { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; }
+    .legal-eyebrow {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase;
+      color: #93c5fd; margin-bottom: 14px; display: block;
+    }
+    .legal-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 4.5vw, 48px); font-weight: 600;
+      line-height: 1.12; letter-spacing: -0.02em; color: #fff; margin-bottom: 12px;
+    }
+    .legal-updated { font-size: 15px; color: rgba(255,255,255,0.55); }
+
+    /* ── LEGAL BODY ── */
+    .legal-section { background: var(--gray-50); padding: 56px 2rem 88px; }
+    .legal-body {
+      max-width: 780px; margin: 0 auto;
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: var(--r-lg); padding: 56px clamp(24px, 5vw, 64px);
+    }
+    .legal-body .intro { font-size: 16.5px; color: var(--text-muted); line-height: 1.75; margin-bottom: 8px; }
+    .legal-body h2 {
+      font-family: var(--font-serif); font-size: 24px; font-weight: 600;
+      color: var(--navy); letter-spacing: -0.01em; line-height: 1.25;
+      margin: 44px 0 16px;
+    }
+    .legal-body h2:first-of-type { margin-top: 32px; }
+    .legal-body p { font-size: 16px; color: var(--text-muted); line-height: 1.75; margin-bottom: 16px; }
+    .legal-body ul { list-style: none; margin: 0 0 16px; padding: 0; }
+    .legal-body ul li {
+      position: relative; font-size: 16px; color: var(--text-muted); line-height: 1.7;
+      padding-left: 26px; margin-bottom: 12px;
+    }
+    .legal-body ul li::before {
+      content: ''; position: absolute; left: 6px; top: 11px;
+      width: 6px; height: 6px; border-radius: 50%; background: var(--blue);
+    }
+    .legal-body ul ul { margin-top: 12px; margin-bottom: 0; }
+    .legal-body ul ul li::before { background: var(--gray-400); }
+    .legal-body strong { color: var(--text); font-weight: 600; }
+    .legal-body a { color: var(--blue); text-decoration: none; font-weight: 500; }
+    .legal-body a:hover { text-decoration: underline; }
+    .legal-body .caps { letter-spacing: 0.005em; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+    }
+    @media (max-width: 560px) {
+      .nav-inner { padding: 0 1rem; }
+      .nav-logo-mark, .nav-logo-mark img { width: 32px; height: 32px; }
+      .nav-logo-name { font-size: 18px; padding-bottom: 2px; }
+      .nav-right { gap: 8px; }
+      .nav-signin { padding: 8px 12px; white-space: nowrap; }
+      .btn-nav { padding: 8px 12px; }
+      .legal-body { padding: 36px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">
+      <div class="nav-logo-mark">
+        <img src="/logo.png" alt="AirportsCIP logo" />
+      </div>
+      <span class="nav-logo-name">Airports<span>CIP</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#how-it-works">How it works</a>
+      <a href="/pricing">Pricing</a>
+    </div>
+    <div class="nav-right">
+      <a class="nav-signin" href="https://app.airportscip.com">Log In</a>
+      <a class="btn-nav" href="/demo">Request a Demo</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="legal-hero">
+  <div class="legal-hero-inner">
+    <span class="legal-eyebrow">Legal</span>
+    <h1>Terms of Service</h1>
+    <p class="legal-updated"><strong>Last updated: June 20, 2026</strong></p>
+  </div>
+</header>
+
+<!-- BODY -->
+<main class="legal-section">
+  <article class="legal-body">
+
+    <p class="intro">These Terms of Service ("<strong>Terms</strong>") are a binding agreement between <strong>AIRPORTSCIP LLC</strong> ("<strong>AirportsCIP</strong>," "<strong>we</strong>," "<strong>us</strong>," or "<strong>our</strong>"), the operator of the AirportsCIP platform available at airportscip.com and app.airportscip.com (the "<strong>Service</strong>"), and the entity or person that accesses or uses the Service ("<strong>Customer</strong>," "<strong>you</strong>," or "<strong>your</strong>"). By creating an account, accessing, or using the Service, you agree to these Terms. If you do not agree, do not use the Service.</p>
+
+    <p>If you are entering into these Terms on behalf of an organization (such as an airport sponsor, authority, or municipality), you represent that you have authority to bind that organization, and "you" refers to that organization.</p>
+
+    <h2>1. The Service</h2>
+    <p>AirportsCIP is a software-as-a-service platform that helps airports and their representatives organize capital improvement plans (CIP), manage grants (including FAA Airport Improvement Program (AIP) and related funding), track projects, phases, drawdowns, vendors, tasks, and generate draft documents and forms. The Service is a <strong>planning, organization, and document-preparation tool only</strong>. It is not a substitute for professional, legal, financial, engineering, or regulatory advice, and it does not submit applications to, or communicate on your behalf with, the FAA or any agency unless you do so yourself.</p>
+
+    <h2>2. Eligibility and Accounts</h2>
+    <ul>
+      <li>You must be at least 18 years old and capable of forming a binding contract.</li>
+      <li>The Service is offered for business/professional use; it is <strong>not</strong> intended for consumers or for personal, family, or household purposes.</li>
+      <li>You are responsible for all activity under your account and for keeping your credentials confidential. Notify us promptly at <a href="mailto:hello@airportscip.com">hello@airportscip.com</a> of any unauthorized use.</li>
+      <li>You are responsible for the accuracy of the information you provide and for ensuring that the individuals you invite (staff, consultants, vendors) are authorized to access your data.</li>
+    </ul>
+
+    <h2>3. Subscriptions, Fees, and Payment</h2>
+    <ul>
+      <li>Access to some features requires a paid subscription tier. Fees, billing frequency, and the features included in each tier are as described at the time of purchase or in a separate order or invoice.</li>
+      <li>We bill by invoice. Payment is due as stated on the invoice and may be made by check or direct deposit (ACH). We do not accept or process credit-card payments.</li>
+      <li>Unless stated otherwise: fees are quoted in U.S. dollars, are billed in advance, and are <strong>non-refundable</strong> except as required by law.</li>
+      <li>We may change pricing or the contents of subscription tiers on a prospective basis with reasonable notice. Continued use after a change takes effect constitutes acceptance.</li>
+      <li>You are responsible for any applicable taxes other than taxes on our net income.</li>
+      <li>We may suspend or limit access for non-payment after reasonable notice.</li>
+    </ul>
+
+    <h2>4. License to Use the Service</h2>
+    <p>Subject to your compliance with these Terms and payment of applicable fees, we grant you a limited, non-exclusive, non-transferable, non-sublicensable, revocable license to access and use the Service for your internal business purposes during your subscription term. This license grants you no rights other than those expressly stated.</p>
+
+    <h2>5. Intellectual Property; Ownership</h2>
+    <ul>
+      <li>The Service, including all software, source code, object code, designs, user interfaces, text, graphics, logos, documentation, templates, workflows, and all other content and materials we provide (excluding Customer Data), and all intellectual property and proprietary rights therein (the "<strong>AirportsCIP Materials</strong>"), are and remain the sole and exclusive property of AirportsCIP and its licensors. The Service is licensed, not sold.</li>
+      <li>All rights not expressly granted to you are reserved by AirportsCIP. No title to or ownership of any AirportsCIP Materials is transferred to you.</li>
+      <li>"AirportsCIP," our logos, and related marks are our trademarks. You may not use them without our prior written consent.</li>
+      <li><strong>Feedback.</strong> If you give us suggestions, ideas, or feedback about the Service, you grant us a perpetual, irrevocable, worldwide, royalty-free license to use and incorporate it without restriction or obligation to you.</li>
+    </ul>
+
+    <h2>6. Restrictions</h2>
+    <p>You will not, and will not permit any third party to:</p>
+    <ul>
+      <li>copy, modify, translate, or create derivative works of the Service or any AirportsCIP Materials;</li>
+      <li>reverse engineer, decompile, disassemble, or otherwise attempt to discover the source code, structure, or underlying ideas of the Service, except to the limited extent this restriction is prohibited by applicable law;</li>
+      <li>access or use the Service to build, train, or improve a competing or similar product or service, or for any benchmarking or competitive analysis;</li>
+      <li>resell, sublicense, rent, lease, distribute, or otherwise make the Service available to any third party except authorized users under your account;</li>
+      <li>remove, obscure, or alter any proprietary notices;</li>
+      <li>scrape, crawl, or use bots or automated means to access or extract data from the Service, or circumvent any access controls, rate limits, or usage restrictions;</li>
+      <li>introduce malware or interfere with or disrupt the integrity, security, or performance of the Service;</li>
+      <li>attempt to gain unauthorized access to the Service, other accounts, or our systems; or</li>
+      <li>use the Service in violation of any applicable law or regulation.</li>
+    </ul>
+    <p>We may investigate and take appropriate action, including suspension or termination, for any suspected violation.</p>
+
+    <h2>7. Customer Data</h2>
+    <ul>
+      <li>"<strong>Customer Data</strong>" means data, files, and content you or your authorized users submit to the Service (including project, grant, financial, and organizational information and uploaded documents). As between the parties, you retain all rights in your Customer Data.</li>
+      <li>You grant us a non-exclusive, worldwide license to host, store, process, transmit, display, and otherwise use Customer Data solely to provide, maintain, secure, and improve the Service and as otherwise permitted in these Terms and our Privacy Policy.</li>
+      <li>You represent and warrant that you have all rights necessary to provide the Customer Data and that it does not violate any law or third-party right.</li>
+      <li>We may create and use <strong>aggregated and de-identified data</strong> derived from use of the Service (which does not identify you or any individual) for any lawful business purpose, including improving and operating the Service.</li>
+      <li>You are responsible for maintaining your own backups of important Customer Data. While we maintain reasonable measures, we are not a system of record or an archival service.</li>
+    </ul>
+
+    <h2>8. Artificial Intelligence Features</h2>
+    <p>Certain features use artificial intelligence (including third-party AI models) to generate drafts, summaries, form pre-fills, parsed data, and suggestions ("<strong>AI Output</strong>"). You acknowledge and agree that:</p>
+    <ul>
+      <li>AI Output may be <strong>inaccurate, incomplete, or unsuitable</strong> for your specific situation, and may not reflect current FAA rules, forms, or requirements;</li>
+      <li>AI Output is provided to assist you and is <strong>not</strong> professional, legal, financial, engineering, or regulatory advice;</li>
+      <li><strong>You are solely responsible for reviewing, verifying, correcting, and approving all AI Output</strong> before relying on it, submitting it to any agency, or using it for any purpose; and</li>
+      <li>we make no representation that AI Output is accurate, complete, or fit for any particular purpose.</li>
+    </ul>
+
+    <h2>9. Third-Party Services</h2>
+    <p>The Service relies on and may integrate with third-party services (for example, hosting, database, authentication, email, scheduling, and AI providers). We are not responsible for third-party services, and your use of them may be subject to their separate terms. Links to third-party websites are provided for convenience and are not endorsements.</p>
+
+    <h2>10. Disclaimers</h2>
+    <ul>
+      <li class="caps"><strong>THE SERVICE, AIRPORTSCIP MATERIALS, AND ALL AI OUTPUT ARE PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY.</strong> TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE DISCLAIM ALL WARRANTIES, INCLUDING IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT, AND ANY WARRANTIES ARISING FROM COURSE OF DEALING OR USAGE OF TRADE.</li>
+      <li class="caps">WE DO NOT WARRANT THAT THE SERVICE WILL BE UNINTERRUPTED, SECURE, ERROR-FREE, OR THAT IT WILL MEET YOUR REQUIREMENTS, OR THAT ANY DATA, CALCULATIONS, FORMS, SCORES (INCLUDING ANY ESTIMATED PRIORITY OR NPR-TYPE SCORES), OR OTHER OUTPUTS WILL BE ACCURATE, COMPLETE, OR CURRENT.</li>
+      <li class="caps"><strong>NO GUARANTEE OF OUTCOMES.</strong> WE DO NOT GUARANTEE THE APPROVAL, AMOUNT, OR TIMING OF ANY GRANT OR FUNDING, COMPLIANCE WITH ANY LAW OR REGULATION, OR ANY PARTICULAR RESULT FROM USING THE SERVICE. ALL DECISIONS YOU MAKE BASED ON THE SERVICE ARE YOUR SOLE RESPONSIBILITY, AND YOU SHOULD INDEPENDENTLY VERIFY ALL INFORMATION AND CONSULT QUALIFIED PROFESSIONALS AND THE FAA AS APPROPRIATE.</li>
+    </ul>
+
+    <h2>11. Limitation of Liability</h2>
+    <ul>
+      <li class="caps">TO THE MAXIMUM EXTENT PERMITTED BY LAW, IN NO EVENT WILL AIRPORTSCIP OR ITS OWNERS, OFFICERS, EMPLOYEES, OR SUPPLIERS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR PUNITIVE DAMAGES, OR FOR ANY LOSS OF PROFITS, REVENUE, DATA, GOODWILL, FUNDING, OR BUSINESS OPPORTUNITY, ARISING OUT OF OR RELATED TO THESE TERMS OR THE SERVICE, WHETHER IN CONTRACT, TORT, OR OTHERWISE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</li>
+      <li class="caps">TO THE MAXIMUM EXTENT PERMITTED BY LAW, OUR TOTAL CUMULATIVE LIABILITY ARISING OUT OF OR RELATED TO THESE TERMS OR THE SERVICE WILL NOT EXCEED THE GREATER OF (A) THE TOTAL FEES YOU PAID TO US FOR THE SERVICE IN THE <strong>TWELVE (12) MONTHS</strong> IMMEDIATELY PRECEDING THE EVENT GIVING RISE TO THE CLAIM, OR (B) <strong>ONE HUNDRED U.S. DOLLARS ($100)</strong>.</li>
+      <li class="caps">THESE LIMITATIONS APPLY EVEN IF A REMEDY FAILS OF ITS ESSENTIAL PURPOSE. SOME JURISDICTIONS DO NOT ALLOW CERTAIN LIMITATIONS, SO SOME OF THE ABOVE MAY NOT APPLY TO YOU.</li>
+    </ul>
+
+    <h2>12. Indemnification</h2>
+    <p>You will defend, indemnify, and hold harmless AirportsCIP and its owners, officers, employees, and agents from and against any claims, damages, losses, liabilities, costs, and expenses (including reasonable attorneys' fees) arising out of or related to: (a) your Customer Data; (b) your use of the Service; (c) your violation of these Terms or any law; or (d) your infringement or misappropriation of any third-party right.</p>
+
+    <h2>13. Term, Suspension, and Termination</h2>
+    <ul>
+      <li>These Terms apply for as long as you use the Service or maintain an account.</li>
+      <li>You may stop using the Service and close your account at any time. Fees already paid are non-refundable except as required by law.</li>
+      <li>We may suspend or terminate your access at any time, with or without notice, for any reason, including suspected violation of these Terms or risk to the Service or other users.</li>
+      <li>Upon termination, your license ends and you must stop using the Service. We may delete Customer Data after a reasonable period; export your data before termination if you need it.</li>
+      <li>Sections that by their nature should survive termination (including Sections 5–8 and 10–15) will survive.</li>
+    </ul>
+
+    <h2>14. Changes to the Service and Terms</h2>
+    <p>We may modify, suspend, or discontinue the Service (or any part of it) at any time. We may also update these Terms; if we make material changes, we will take reasonable steps to notify you (such as by posting the updated Terms with a new "Last updated" date or by email). Changes are effective when posted unless stated otherwise, and your continued use after that constitutes acceptance.</p>
+
+    <h2>15. Governing Law and Disputes</h2>
+    <p>These Terms are governed by the laws of the State of <strong>Florida</strong>, without regard to its conflict-of-laws rules. The exclusive venue for any dispute will be the state and federal courts located in the <strong>State of Florida</strong>, and you consent to personal jurisdiction there.</p>
+
+    <h2>16. Miscellaneous</h2>
+    <ul>
+      <li><strong>Entire Agreement.</strong> These Terms and any documents referenced (including the Privacy Policy and any order or invoice) are the entire agreement between you and us regarding the Service and supersede prior agreements on the subject.</li>
+      <li><strong>Severability.</strong> If any provision is found unenforceable, the rest remains in effect and the unenforceable provision will be modified to the minimum extent necessary.</li>
+      <li><strong>No Waiver.</strong> Our failure to enforce a provision is not a waiver of it.</li>
+      <li><strong>Assignment.</strong> You may not assign these Terms without our consent; we may assign them in connection with a merger, acquisition, or sale of assets.</li>
+      <li><strong>Force Majeure.</strong> We are not liable for delays or failures caused by events beyond our reasonable control.</li>
+      <li><strong>Relationship.</strong> The parties are independent contractors; these Terms create no agency, partnership, or joint venture.</li>
+    </ul>
+
+    <h2>17. Contact</h2>
+    <p>Questions about these Terms: <strong><a href="mailto:hello@airportscip.com">hello@airportscip.com</a></strong> — <strong>AIRPORTSCIP LLC</strong>.</p>
+
+  </article>
+</main>
+
+<!-- FOOTER (shared — see footer.js) -->
+<footer id="site-footer"></footer>
+<script src="/footer.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — AirportsCIP</title>
+  <meta name="description" content="How AirportsCIP collects, uses, and shares information in connection with its FAA grant and capital improvement plan management platform." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:        #0c1f3f;
+      --navy-mid:    #15335c;
+      --navy-light:  #1e4a82;
+      --blue:        #2563eb;
+      --blue-light:  #3b82f6;
+      --blue-pale:   #eff6ff;
+      --blue-faint:  #f0f7ff;
+      --white:       #ffffff;
+      --gray-50:     #f8fafc;
+      --gray-100:    #f1f5f9;
+      --gray-200:    #e2e8f0;
+      --gray-400:    #94a3b8;
+      --gray-500:    #64748b;
+      --text:        #1e293b;
+      --text-muted:  #475569;
+      --font-serif:  'Lora', Georgia, serif;
+      --font-sans:   'Inter', system-ui, sans-serif;
+      --max-w:       1120px;
+      --r:           10px;
+      --r-lg:        16px;
+      --r-xl:        22px;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-sans); color: var(--text); background: var(--white); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+    a { color: inherit; }
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 2rem; }
+
+    /* ── NAV ── */
+    .nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(12,31,63,0.97); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+    .nav-inner {
+      max-width: var(--max-w); margin: 0 auto; padding: 0 2rem;
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo { display: flex; align-items: flex-end; gap: 10px; text-decoration: none; }
+    .nav-logo-mark { width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .nav-logo-mark img { width: 40px; height: 40px; object-fit: contain; display: block; }
+    .nav-logo-name { font-family: var(--font-serif); font-size: 22px; font-weight: 600; color: #fff; letter-spacing: 0.01em; line-height: 1; padding-bottom: 3px; }
+    .nav-logo-name span { color: #93c5fd; }
+    .nav-links { display: flex; align-items: center; gap: 2rem; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.65); text-decoration: none; transition: color .15s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav-signin {
+      font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.75);
+      text-decoration: none; padding: 9px 20px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.2); transition: border-color .15s, color .15s;
+    }
+    .nav-signin:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
+    .btn-nav {
+      background: var(--blue); color: #fff; padding: 9px 22px; border-radius: 8px;
+      font-size: 14px; font-weight: 600; text-decoration: none; transition: background .15s; white-space: nowrap;
+    }
+    .btn-nav:hover { background: var(--blue-light); }
+
+    /* ── LEGAL HERO ── */
+    .legal-hero {
+      background: var(--navy); padding: 56px 2rem 48px;
+      position: relative; overflow: hidden;
+    }
+    .legal-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(90deg, transparent, transparent 119px, rgba(255,255,255,0.018) 119px, rgba(255,255,255,0.018) 120px);
+      pointer-events: none;
+    }
+    .legal-hero-inner { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; }
+    .legal-eyebrow {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase;
+      color: #93c5fd; margin-bottom: 14px; display: block;
+    }
+    .legal-hero h1 {
+      font-family: var(--font-serif);
+      font-size: clamp(32px, 4.5vw, 48px); font-weight: 600;
+      line-height: 1.12; letter-spacing: -0.02em; color: #fff; margin-bottom: 12px;
+    }
+    .legal-updated { font-size: 15px; color: rgba(255,255,255,0.55); }
+
+    /* ── LEGAL BODY ── */
+    .legal-section { background: var(--gray-50); padding: 56px 2rem 88px; }
+    .legal-body {
+      max-width: 780px; margin: 0 auto;
+      background: var(--white); border: 1px solid var(--gray-200);
+      border-radius: var(--r-lg); padding: 56px clamp(24px, 5vw, 64px);
+    }
+    .legal-body .intro { font-size: 16.5px; color: var(--text-muted); line-height: 1.75; margin-bottom: 8px; }
+    .legal-body h2 {
+      font-family: var(--font-serif); font-size: 24px; font-weight: 600;
+      color: var(--navy); letter-spacing: -0.01em; line-height: 1.25;
+      margin: 44px 0 16px;
+    }
+    .legal-body h2:first-of-type { margin-top: 32px; }
+    .legal-body p { font-size: 16px; color: var(--text-muted); line-height: 1.75; margin-bottom: 16px; }
+    .legal-body .subhead { font-size: 16px; font-weight: 600; color: var(--text); margin: 8px 0 12px; }
+    .legal-body ul { list-style: none; margin: 0 0 16px; padding: 0; }
+    .legal-body ul li {
+      position: relative; font-size: 16px; color: var(--text-muted); line-height: 1.7;
+      padding-left: 26px; margin-bottom: 12px;
+    }
+    .legal-body ul li::before {
+      content: ''; position: absolute; left: 6px; top: 11px;
+      width: 6px; height: 6px; border-radius: 50%; background: var(--blue);
+    }
+    .legal-body ul ul { margin-top: 12px; margin-bottom: 0; }
+    .legal-body ul ul li::before { background: var(--gray-400); }
+    .legal-body strong { color: var(--text); font-weight: 600; }
+    .legal-body a { color: var(--blue); text-decoration: none; font-weight: 500; }
+    .legal-body a:hover { text-decoration: underline; }
+    .legal-body .caps { letter-spacing: 0.005em; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+    }
+    @media (max-width: 560px) {
+      .nav-inner { padding: 0 1rem; }
+      .nav-logo-mark, .nav-logo-mark img { width: 32px; height: 32px; }
+      .nav-logo-name { font-size: 18px; padding-bottom: 2px; }
+      .nav-right { gap: 8px; }
+      .nav-signin { padding: 8px 12px; white-space: nowrap; }
+      .btn-nav { padding: 8px 12px; }
+      .legal-body { padding: 36px 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="/">
+      <div class="nav-logo-mark">
+        <img src="/logo.png" alt="AirportsCIP logo" />
+      </div>
+      <span class="nav-logo-name">Airports<span>CIP</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="/#features">Features</a>
+      <a href="/#how-it-works">How it works</a>
+      <a href="/pricing">Pricing</a>
+    </div>
+    <div class="nav-right">
+      <a class="nav-signin" href="https://app.airportscip.com">Log In</a>
+      <a class="btn-nav" href="/demo">Request a Demo</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="legal-hero">
+  <div class="legal-hero-inner">
+    <span class="legal-eyebrow">Legal</span>
+    <h1>Privacy Policy</h1>
+    <p class="legal-updated"><strong>Last updated: June 20, 2026</strong></p>
+  </div>
+</header>
+
+<!-- BODY -->
+<main class="legal-section">
+  <article class="legal-body">
+
+    <p class="intro">This Privacy Policy explains how <strong>AIRPORTSCIP LLC</strong> ("<strong>AirportsCIP</strong>," "<strong>we</strong>," "<strong>us</strong>") collects, uses, and shares information in connection with the AirportsCIP platform at airportscip.com and app.airportscip.com (the "<strong>Service</strong>"). The Service is a business tool used by airports and their representatives; it is not directed to consumers or children.</p>
+
+    <h2>1. Information We Collect</h2>
+    <p class="subhead">Information you provide:</p>
+    <ul>
+      <li><strong>Account and contact information</strong> — such as name, email address, job title, organization, and phone number for you and the users you invite.</li>
+      <li><strong>Content you enter into the Service</strong> — airport, project, phase, grant, funding, financial, vendor, task, and compliance information, and documents you upload (for example, award letters or supporting files). This is "<strong>Customer Data</strong>."</li>
+      <li><strong>Communications</strong> — messages you send us (support requests, "Ask an Expert" questions, demo or contact form submissions).</li>
+      <li><strong>Billing information</strong> — if you subscribe to a paid plan, we send you an invoice and you pay by check or direct deposit (ACH). We do <strong>not</strong> collect or store payment card numbers.</li>
+    </ul>
+    <p class="subhead">Information collected automatically:</p>
+    <ul>
+      <li><strong>Usage and device data</strong> — such as log data, IP address, browser type, pages viewed, actions taken, timestamps, and similar analytics.</li>
+      <li><strong>Cookies and similar technologies</strong> — used to keep you signed in, remember preferences, and operate and improve the Service. See "Cookies" below.</li>
+    </ul>
+
+    <h2>2. How We Use Information</h2>
+    <p>We use information to:</p>
+    <ul>
+      <li>provide, operate, secure, maintain, and improve the Service;</li>
+      <li>create and manage accounts and authenticate users;</li>
+      <li>generate the features you request (including AI-assisted drafts, summaries, and document parsing — see "AI Processing");</li>
+      <li>communicate with you about your account, support requests, security, and Service updates;</li>
+      <li>manage invoicing and subscriptions;</li>
+      <li>monitor for, prevent, and address fraud, abuse, security incidents, and violations of our Terms; and</li>
+      <li>comply with legal obligations and enforce our agreements.</li>
+    </ul>
+    <p>We do <strong>not</strong> sell your personal information, and we do not share it for cross-context behavioral advertising.</p>
+
+    <h2>3. AI Processing</h2>
+    <p>Certain features use third-party artificial-intelligence providers to generate drafts, summaries, form pre-fills, and parsed data. When you use these features, the relevant inputs (which may include Customer Data you choose to submit) are transmitted to and processed by our AI provider(s) to produce the output. We use AI providers under business/commercial terms intended to keep your data confidential, used only to provide the feature, and <strong>not used to train the providers' models</strong>. AI output may be inaccurate; you are responsible for reviewing it (see our Terms of Service).</p>
+
+    <h2>4. How We Share Information</h2>
+    <p>We share information only as described here:</p>
+    <ul>
+      <li><strong>Service providers / subprocessors</strong> — vendors that host and operate the Service on our behalf. They are permitted to use the information only to provide services to us. Our current subprocessors are:
+        <ul>
+          <li><strong>Supabase</strong> — database hosting and user authentication</li>
+          <li><strong>Vercel</strong> — application/website hosting</li>
+          <li><strong>Render</strong> — backend/API hosting</li>
+          <li><strong>Anthropic</strong> — AI processing for AI-assisted features</li>
+          <li><strong>Resend</strong> — transactional and notification email delivery</li>
+          <li><strong>Cal.com</strong> — demo and meeting scheduling</li>
+        </ul>
+      </li>
+      <li><strong>Within your organization</strong> — Customer Data is accessible to authorized users in your account according to the roles and permissions you configure; an account administrator can access data in the account.</li>
+      <li><strong>Legal and safety</strong> — when we believe disclosure is required by law, regulation, legal process, or governmental request, or is necessary to protect the rights, property, or safety of AirportsCIP, our users, or others.</li>
+      <li><strong>Business transfers</strong> — in connection with a merger, acquisition, financing, or sale of assets, subject to this Policy.</li>
+      <li><strong>With your direction or consent</strong> — when you ask us to share information or otherwise consent.</li>
+    </ul>
+    <p>We may also create and use <strong>aggregated or de-identified information</strong> that does not identify you or any individual for any lawful purpose.</p>
+
+    <h2>5. Data Retention</h2>
+    <p>We retain information for as long as your account is active and as needed to provide the Service, then for a reasonable period afterward as needed to comply with legal obligations, resolve disputes, enforce agreements, and for legitimate business purposes. We may delete or anonymize information when it is no longer needed. You are responsible for exporting any Customer Data you wish to keep before your account is closed.</p>
+
+    <h2>6. Data Security</h2>
+    <p>We use reasonable administrative, technical, and organizational measures designed to protect information (such as access controls, authentication, and encryption in transit). However, <strong>no method of transmission or storage is completely secure</strong>, and we cannot guarantee absolute security. You are responsible for safeguarding your credentials and configuring user access appropriately.</p>
+
+    <h2>7. Your Choices and Rights</h2>
+    <ul>
+      <li>You can access and update much of your account information within the Service, or by contacting us.</li>
+      <li>You may request deletion of your account; some information may be retained as described in "Data Retention" or as required by law.</li>
+      <li>Depending on where you are located, you may have rights to access, correct, delete, or port your personal information, or to object to or restrict certain processing. To exercise any such right, contact us at <strong><a href="mailto:hello@airportscip.com">hello@airportscip.com</a></strong>. We will respond as required by applicable law and may need to verify your identity.</li>
+      <li>Because much of the data in the Service belongs to and is controlled by the organization (customer) that operates the account, we may direct certain requests to that organization.</li>
+    </ul>
+
+    <h2>8. Cookies</h2>
+    <p>We use cookies and similar technologies that are necessary to operate the Service (for example, to keep you signed in and remember preferences) and may use limited analytics. You can control cookies through your browser settings, but disabling some cookies may affect how the Service functions.</p>
+
+    <h2>9. Children's Privacy</h2>
+    <p>The Service is intended for business use and is not directed to children. We do not knowingly collect personal information from anyone under 18. If you believe a minor has provided us information, contact us and we will take appropriate steps to delete it.</p>
+
+    <h2>10. International Users</h2>
+    <p>We operate in the <strong>United States</strong> and process and store information there. If you access the Service from outside the United States, you understand your information will be processed in the United States, which may have different data-protection laws than your jurisdiction.</p>
+
+    <h2>11. Changes to This Policy</h2>
+    <p>We may update this Policy from time to time. If we make material changes, we will take reasonable steps to notify you (such as posting the updated Policy with a new "Last updated" date or by email). Your continued use of the Service after the changes take effect constitutes acceptance.</p>
+
+    <h2>12. Contact Us</h2>
+    <p>Questions or requests regarding this Policy: <strong><a href="mailto:hello@airportscip.com">hello@airportscip.com</a></strong> — <strong>AIRPORTSCIP LLC</strong>.</p>
+
+  </article>
+</main>
+
+<!-- FOOTER (shared — see footer.js) -->
+<footer id="site-footer"></footer>
+<script src="/footer.js"></script>
+
+</body>
+</html>
