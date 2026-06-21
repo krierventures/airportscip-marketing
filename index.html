@@ -374,6 +374,87 @@
     }
     .workflow-step p { font-size: 14px; line-height: 1.65; color: rgba(255,255,255,0.38); }
 
+    /* ─── GRANT MARKETPLACE ─── */
+    .marketplace { background: var(--white); overflow: hidden; }
+    .marketplace-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 64px; align-items: center;
+    }
+    .marketplace-text { min-width: 0; }
+    .marketplace-points { list-style: none; margin: 34px 0 38px; display: grid; gap: 20px; }
+    .marketplace-point { display: flex; gap: 14px; align-items: flex-start; }
+    .marketplace-point .mp-icon {
+      width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+      background: var(--blue-pale); color: var(--blue);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .marketplace-point h3 { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 4px; letter-spacing: -0.01em; }
+    .marketplace-point p { font-size: 14.5px; line-height: 1.6; color: var(--text-muted); }
+
+    /* opportunity-card mock (illustrative — not a real screenshot) */
+    .marketplace-media { min-width: 0; }
+    .mkt-panel {
+      background: var(--navy); border-radius: 18px; padding: 22px;
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 24px 60px -20px rgba(12,31,63,0.35), 0 8px 24px -12px rgba(12,31,63,0.2);
+    }
+    .mkt-panel-head {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 2px 4px 18px;
+    }
+    .mkt-panel-title {
+      font-family: var(--font-serif); font-size: 16px; font-weight: 600; color: #fff;
+      display: flex; align-items: center; gap: 9px;
+    }
+    .mkt-panel-title .live { width: 7px; height: 7px; border-radius: 50%; background: #28c840; flex-shrink: 0; }
+    .mkt-panel-badge {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.03em;
+      color: #93c5fd; background: rgba(147,197,253,0.12);
+      padding: 5px 11px; border-radius: 100px;
+    }
+    .opp-card { background: var(--white); border-radius: 12px; padding: 18px 18px 20px; margin-bottom: 12px; }
+    .opp-card:last-child { margin-bottom: 0; }
+    .opp-card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 12px; }
+    .opp-tag {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.06em;
+      color: var(--blue); background: var(--blue-pale);
+      padding: 4px 10px; border-radius: 6px;
+    }
+    .opp-chip {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 12px; font-weight: 500; color: var(--amber);
+      background: var(--amber-pale); padding: 4px 10px; border-radius: 100px; white-space: nowrap;
+    }
+    .opp-name {
+      font-family: var(--font-serif); font-size: 18px; font-weight: 600;
+      color: var(--navy); line-height: 1.25; margin-bottom: 6px;
+    }
+    .opp-meta { font-size: 13px; color: var(--text-muted); margin-bottom: 18px; }
+    .opp-meta .ok { color: #16a34a; font-weight: 600; }
+    .opp-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
+    .opp-amount strong {
+      font-family: var(--font-serif); font-size: 24px; font-weight: 600; color: var(--navy);
+      line-height: 1; display: block;
+    }
+    .opp-amount span { display: block; font-size: 11.5px; color: var(--gray-500); margin-top: 5px; }
+    .opp-btn {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: var(--blue); color: #fff; white-space: nowrap;
+      padding: 10px 16px; border-radius: 8px; font-size: 13px; font-weight: 600;
+      text-decoration: none; transition: background .15s;
+    }
+    .opp-btn:hover { background: var(--blue-light); }
+    .opp-card.compact { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 15px 18px; }
+    .opp-card.compact .opp-name { font-size: 15px; margin-bottom: 4px; }
+    .opp-card.compact .opp-meta { margin-bottom: 0; font-size: 12px; }
+    .opp-card.compact .opp-tag { margin-bottom: 9px; display: inline-block; }
+    .opp-card.compact .opp-amount { text-align: right; flex-shrink: 0; }
+    .opp-card.compact .opp-amount strong { font-size: 18px; }
+
+    @media (max-width: 920px) {
+      .marketplace-inner { grid-template-columns: 1fr; gap: 44px; max-width: 540px; margin: 0 auto; }
+    }
+
     /* ─── CREDIBILITY BAR ─── */
     .credibility {
       background: var(--blue-faint);
@@ -763,6 +844,115 @@
         <h3>Generate and submit</h3>
         <p>Export pre-filled FAA forms. Track drawdowns. Document everything. Close grants cleanly — and start the next cycle without starting from scratch.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── GRANT MARKETPLACE ── -->
+<section class="marketplace section" id="grant-marketplace">
+  <div class="container">
+    <div class="marketplace-inner">
+
+      <div class="marketplace-text">
+        <div class="section-eyebrow">Grant Marketplace</div>
+        <h2 class="section-heading">We don't just manage your grants —<br/><em>we help you find new ones.</em></h2>
+        <p class="section-intro">
+          Our team continuously scans federal and state funding sources and posts the opportunities
+          your airport is eligible for, right inside AirportsCIP. Funding you'd otherwise miss shows up
+          in your account — no hunting across a dozen sites.
+        </p>
+
+        <ul class="marketplace-points">
+          <li class="marketplace-point">
+            <span class="mp-icon" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 4 23 10 17 10"/>
+                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+              </svg>
+            </span>
+            <div>
+              <h3>Always current</h3>
+              <p>New opportunities added as our grant experts find them.</p>
+            </div>
+          </li>
+          <li class="marketplace-point">
+            <span class="mp-icon" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/>
+                <circle cx="12" cy="12" r="5"/>
+                <circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/>
+              </svg>
+            </span>
+            <div>
+              <h3>Matched to your airport</h3>
+              <p>See what fits your projects and eligibility.</p>
+            </div>
+          </li>
+          <li class="marketplace-point">
+            <span class="mp-icon" aria-hidden="true">
+              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                <polyline points="17 6 23 6 23 12"/>
+              </svg>
+            </span>
+            <div>
+              <h3>Track to award</h3>
+              <p>Move an opportunity straight into your grant pipeline and lifecycle.</p>
+            </div>
+          </li>
+        </ul>
+
+        <a class="btn-primary" href="/demo">
+          Request a Demo
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="marketplace-media">
+        <div class="mkt-panel" role="img" aria-label="Illustration of the Grant Marketplace inside AirportsCIP, showing matched funding opportunities your airport is eligible for, each with an estimated amount and application deadline.">
+          <div class="mkt-panel-head">
+            <div class="mkt-panel-title"><span class="live"></span> Grant Marketplace</div>
+            <span class="mkt-panel-badge">5 new this week</span>
+          </div>
+
+          <div class="opp-card">
+            <div class="opp-card-top">
+              <span class="opp-tag">AIP</span>
+              <span class="opp-chip">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="9"/>
+                  <polyline points="12 7 12 12 16 14"/>
+                </svg>
+                Closes Aug 15, 2026
+              </span>
+            </div>
+            <h4 class="opp-name">AIP — Runway Rehabilitation</h4>
+            <p class="opp-meta">Matched to Pine Valley Airfield <span class="ok">· Eligible</span></p>
+            <div class="opp-foot">
+              <div class="opp-amount"><strong>$4.2M</strong><span>Est. federal share</span></div>
+              <a class="opp-btn" href="/demo">
+                View opportunity
+                <svg width="13" height="13" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="opp-card compact">
+            <div>
+              <span class="opp-tag">State</span>
+              <h4 class="opp-name">Aviation Grant — Taxiway Lighting</h4>
+              <p class="opp-meta">Matched to your CIP <span class="ok">· Eligible</span></p>
+            </div>
+            <div class="opp-amount"><strong>$850K</strong><span>Est. award</span></div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
